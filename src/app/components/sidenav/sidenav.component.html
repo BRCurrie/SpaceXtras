@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidenav is hidden unless the button is toggled on a mobile screen -->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="false"
+  >
+    <mat-toolbar class="header">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/about">About</a>
+      <a mat-list-item routerLink="/capsules">Capsules</a>
+      <a mat-list-item routerLink="/home">Dashboard</a>
+      <a mat-list-item routerLink="/launches">Launches</a>
+      <a mat-list-item routerLink="/map">Map</a>
+      <a mat-list-item routerLink="/roadster">Roadster</a>
+      <a mat-list-item routerLink="/timeline">Timeline</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class=" navbar mat-toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>SpaceX</span>
+      <span *ngIf="!(isHandset$ | async)">
+        <a mat-button routerLink="/about">About</a>
+        <a mat-button routerLink="/capsules">Capsules</a>
+        <a mat-button routerLink="/home">Dashboard</a>
+        <a mat-button routerLink="/launches">Launches</a>
+        <a mat-button routerLink="/map">Map</a>
+        <a mat-button routerLink="/roadster">Roadster</a>
+        <a mat-button routerLink="/timeline">Timeline</a>
+      </span>
+    </mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- Fix links in navbar -->
+<!-- Fix links in sidenav -->
+<!-- Maybe add dropdown for links in navbar. There are several components -->

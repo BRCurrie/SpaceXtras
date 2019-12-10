@@ -1,0 +1,54 @@
+<mgl-timeline focusOnOpen="true">
+  <mgl-timeline-entry *ngFor="let history of history">
+    <mgl-timeline-entry-header>{{
+      history.event_date_utc | date: "longDate"
+    }}</mgl-timeline-entry-header>
+    <mgl-timeline-entry-content>
+      <h3 *ngIf="history.flight_number; else noFlight">
+        Flight No: {{ history.flight_number }}
+      </h3>
+      <ng-template #noFlight>
+        <h3>
+          No flight number.
+        </h3>
+      </ng-template>
+      {{ history.details }}
+      <a
+        *ngIf="history.links.reddit"
+        href="{{ history.links.reddit }}"
+        target="_blank"
+        ><fa-icon [icon]="faReddit"></fa-icon
+      ></a>
+      <a
+        *ngIf="history.links.article"
+        href="{{ history.links.article }}"
+        target="_blank"
+        ><fa-icon [icon]="faNewspaper"></fa-icon
+      ></a>
+      <a
+        *ngIf="history.links.wikipedia"
+        href="{{ history.links.wikipedia }}"
+        target="_blank"
+        ><fa-icon [icon]="faWikipediaW"></fa-icon
+      ></a>
+    </mgl-timeline-entry-content>
+    <mgl-timeline-entry-dot
+      style="background-color: red;"
+    ></mgl-timeline-entry-dot>
+  </mgl-timeline-entry>
+
+  <!-- √ Company history as angular-mgl-timeline. Bonus if icon links can be included. -->
+  <!-- Decide on the flight number presence and what to do if absent. 
+    Currently it displays no flight number if there was not an assigned number, but I'm
+    not sure if I really want that to show up at all. And if I don't have something there
+    will people think that those events are bugged/broken? -->
+
+  <!-- Can maybe include launches as part of the timeline with launches on one side -->
+  <!-- And company history on the other. -->
+  <!-- Actually maybe not. -->
+
+  <!-- √ Create interface(s) for history -->
+  <!-- √ Create service to retive history from api -->
+  <!-- Create store for history -->
+  <!--  -->
+</mgl-timeline>
