@@ -10,21 +10,27 @@
   background: inherit;
 }
 
-.mat-toolbar.mat-primary {
+/* .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
-}
+} */
 
-.navbar.mat-toolbar {
+/* .navbar.mat-toolbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 64px;
-  z-index: 99;
+  z-index: 9999;
+} */
+
+.navbar {
+  position: sticky;
+  height: 64px;
 }
 
-.content {
+/* .content {
   margin-top: 64px;
-}
+  position: sticky;
+} */

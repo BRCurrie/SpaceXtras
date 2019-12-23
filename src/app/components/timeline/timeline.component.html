@@ -1,4 +1,6 @@
-<mgl-timeline focusOnOpen="true">
+<mgl-timeline>
+  <!-- focusOnOpen="true" was removed from mgl-timeline to make this work. Otherwise
+  the date bar will be hidden behind the navbar -->
   <mgl-timeline-entry *ngFor="let history of history">
     <mgl-timeline-entry-header>{{
       history.event_date_utc | date: "longDate"
@@ -48,7 +50,7 @@
   <!-- Actually maybe not. -->
 
   <!-- √ Create interface(s) for history -->
-  <!-- √ Create service to retive history from api -->
+  <!-- √ Create service to retrieve history from api -->
   <!-- Create store for history -->
   <!--  -->
 </mgl-timeline>

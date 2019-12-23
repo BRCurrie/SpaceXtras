@@ -1,3 +1,24 @@
+<mat-toolbar color="primary" class="navbar mat-toolbar">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async"
+  >
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>SpaceX</span>
+  <span *ngIf="!(isHandset$ | async)">
+    <a mat-button routerLink="/about">About</a>
+    <a mat-button routerLink="/capsules">Capsules</a>
+    <a mat-button routerLink="/home">Dashboard</a>
+    <a mat-button routerLink="/launches">Launches</a>
+    <a mat-button routerLink="/map">Map</a>
+    <a mat-button routerLink="/roadster">Roadster</a>
+    <a mat-button routerLink="/timeline">Timeline</a>
+  </span>
+</mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidenav is hidden unless the button is toggled on a mobile screen -->
   <mat-sidenav
@@ -20,30 +41,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class=" navbar mat-toolbar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>SpaceX</span>
-      <span *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/about">About</a>
-        <a mat-button routerLink="/capsules">Capsules</a>
-        <a mat-button routerLink="/home">Dashboard</a>
-        <a mat-button routerLink="/launches">Launches</a>
-        <a mat-button routerLink="/map">Map</a>
-        <a mat-button routerLink="/roadster">Roadster</a>
-        <a mat-button routerLink="/timeline">Timeline</a>
-      </span>
-    </mat-toolbar>
-    <div class="content">
+    <main>
       <router-outlet></router-outlet>
-    </div>
+    </main>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

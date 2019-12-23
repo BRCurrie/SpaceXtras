@@ -35,7 +35,7 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns; index as launchId"
@@ -47,8 +47,8 @@
       #paginator
       [length]="dataSource.data.length"
       [pageIndex]="0"
-      [pageSize]="50"
-      [pageSizeOptions]="[25, 50, 100, 250]"
+      [pageSize]="10"
+      [pageSizeOptions]="[10, 20, 50]"
     >
     </mat-paginator>
   </div>
