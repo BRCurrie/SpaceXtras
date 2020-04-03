@@ -1,3 +1,18 @@
-gl-timeline-entry-dot {
-  background-color: (--accent);
+.icon-container {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
+
+fa-icon {
+  font-size: 2em;
+}
+
+mat-divider {
+  margin: 1em;
+}
+
+// .mat-button {
+//   color: white;
+// }

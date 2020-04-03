@@ -1,0 +1,24 @@
+// Theme
+@import "~@angular/material/theming";
+@import "~angular-mgl-timeline/theme";
+
+@include mat-core();
+
+@import "./themes/app-theme";
+// @import './themes/app-light-theme';
+// @import "./app/components/timeline/timeline.component.theme.scss";
+
+// @mixin custom-components-theme($theme) {
+//   @include app-timeline-theme($theme);
+// }
+.app-theme {
+  @include angular-material-theme($app-theme);
+  // @include app-timeline-theme($app-theme);
+}
+
+// .app-light-theme {
+//   @include angular-material-theme($app-light-theme);
+//   @include app-timeline-theme($theme);
+// }
+
+@include mgl-timeline-theme($app-theme);

@@ -1,4 +1,4 @@
-<mgl-timeline>
+<mgl-timeline focusOnOpen="true">
   <!-- focusOnOpen="true" was removed from mgl-timeline to make this work. Otherwise
   the date bar will be hidden behind the navbar -->
   <mgl-timeline-entry *ngFor="let history of history">
@@ -15,32 +15,43 @@
         </h3>
       </ng-template>
       {{ history.details }}
-      <a
-        *ngIf="history.links.reddit"
-        href="{{ history.links.reddit }}"
-        target="_blank"
-        ><fa-icon [icon]="faReddit"></fa-icon
-      ></a>
-      <a
-        *ngIf="history.links.article"
-        href="{{ history.links.article }}"
-        target="_blank"
-        ><fa-icon [icon]="faNewspaper"></fa-icon
-      ></a>
-      <a
-        *ngIf="history.links.wikipedia"
-        href="{{ history.links.wikipedia }}"
-        target="_blank"
-        ><fa-icon [icon]="faWikipediaW"></fa-icon
-      ></a>
+      <mat-divider></mat-divider>
+      <div class="icon-container">
+        <a
+          class="external-link"
+          href="{{ history.links.reddit }}"
+          target="_blank"
+          *ngIf="history.links.reddit"
+        >
+          <button mat-button matTooltip="Reddit">
+            <fa-icon [icon]="faReddit"> </fa-icon>
+          </button>
+        </a>
+        <a
+          href="{{ history.links.article }}"
+          target="_blank"
+          *ngIf="history.links.article"
+        >
+          <button mat-button matTooltip="News Article">
+            <fa-icon [icon]="faNewspaper"> </fa-icon>
+          </button>
+        </a>
+        <a
+          href="{{ history.links.wikipedia }}"
+          target="_blank"
+          *ngIf="history.links.wikipedia"
+        >
+          <button mat-button matTooltip="Wikipedia">
+            <fa-icon [icon]="faWikipediaW"> </fa-icon>
+          </button>
+        </a>
+      </div>
     </mgl-timeline-entry-content>
-    <mgl-timeline-entry-dot
-      style="background-color: red;"
-    ></mgl-timeline-entry-dot>
+    <mgl-timeline-entry-dot class="accent"></mgl-timeline-entry-dot>
   </mgl-timeline-entry>
 
   <!-- √ Company history as angular-mgl-timeline. Bonus if icon links can be included. -->
-  <!-- Decide on the flight number presence and what to do if absent. 
+  <!-- Decide on the flight number presence and what to do if absent.
     Currently it displays no flight number if there was not an assigned number, but I'm
     not sure if I really want that to show up at all. And if I don't have something there
     will people think that those events are bugged/broken? -->
@@ -51,6 +62,4 @@
 
   <!-- √ Create interface(s) for history -->
   <!-- √ Create service to retrieve history from api -->
-  <!-- Create store for history -->
-  <!--  -->
 </mgl-timeline>

@@ -1,0 +1,10 @@
+$app-light-primary: mat-palette($mat-indigo);
+$app-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-light-warn: mat-palette($mat-deep-orange);
+$app-light-theme: mat-dark-theme(
+  $app-light-primary,
+  $app-light-accent,
+  $app-light-warn
+);
+
+@include angular-material-theme($app-light-theme);

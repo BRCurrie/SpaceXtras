@@ -1,0 +1,22 @@
+// @import "~@angular/material/theming";
+
+// @mixin app-timeline-component-theme($theme) {
+//   $primary: map-get($theme, primary);
+//   $warn: map-get($theme, warn);
+// }
+
+// app-timeline {
+//   .mat-button {
+//     color: mat-color($primary);
+//     // color: mat-color($warn);
+//   }
+// }
+
+// // change .mat-button class color in scss file if I get this working
+// // and I decide if I want it to be a theme color.
+// // .mat-button {
+// // color: mat-color($primary);
+// // }
+
+// // below line not present in stock-market-component theme from ng-material
+// // @include angular-material-theme(app-timeline-theme);

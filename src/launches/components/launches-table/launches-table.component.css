@@ -1,0 +1,25 @@
+.full-width-table {
+  width: 100%;
+}
+
+.mat-column-launch_success {
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}
+
+.mat-column-flight_number {
+  flex: 0 0 20% !important;
+  width: 20% !important;
+}
+.mat-column-mission_name {
+  flex: 0 0 50% !important;
+  width: 50% !important;
+}
+.mat-column-launch_date_local {
+  flex: 0 0 20% !important;
+  width: 20% !important;
+}
+
+.mat-row:hover {
+  background-color: #c6c6c6;
+}

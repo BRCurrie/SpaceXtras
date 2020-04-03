@@ -1,0 +1,92 @@
+<div class="header-container">
+  <!-- <img
+    alt="Mission Patch"
+    src="{{ data.launches.links.mission_patch_small }}"
+  /> -->
+  <h2 mat-dialog-title>{{ data.launches.mission_name }}</h2>
+</div>
+<mat-dialog-content>
+  <h4>Rocket: {{ data.launches.rocket.rocket_name | titlecase }}</h4>
+  <p>Flight Number: {{ data.launches.flight_number }}</p>
+  <p>Date: {{ data.launches.launch_date_local | date: "longDate" }}</p>
+  <p>Launch Site: {{ data.launches.launch_site.site_name_long }}</p>
+  <p>{{ data.launches.details }}</p>
+  <mat-tab-group>
+    <!-- Cores Tab -->
+    <mat-tab label="Cores">
+      <div class="tab-container">
+        <ng-container
+          *ngFor="let core of data.launches.rocket.first_stage.cores"
+        >
+          <div class="tab-child">
+            <h4>
+              {{ core.core_serial }}
+            </h4>
+            <ul>
+              <li>Flight: {{ core.flight }}</li>
+              <li>Reused {{ core.reused }}</li>
+              <li>
+                Landing Success:
+                {{ core.land_success }}
+              </li>
+              <li>
+                Landing Intent:
+                {{ core.landing_intent }}
+              </li>
+              <li>
+                Landing Type:
+                {{ core.landing_type }}
+              </li>
+              <li>
+                Landing Vehicle:
+                {{ core.landing_vehicle }}
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+    </mat-tab>
+
+    <!-- Payload Tab -->
+    <mat-tab label="Payload">
+      <div class="tab-container">
+        <ng-container
+          *ngFor="let payload of data.launches.rocket.second_stage.payloads"
+        >
+          <div class="tab-child">
+            <h4>{{ payload.payload_id }}</h4>
+            <ul>
+              <li>Type: {{ payload.payload_type }}</li>
+              <li>Orbit: {{ payload.orbit }}</li>
+              <li *ngIf="payload.payload_mass_kg">
+                Mass:
+                {{ payload.payload_mass_kg }} kg
+              </li>
+              <li *ngIf="payload.mass_returned_kg">
+                Mass returned:
+                {{ payload.mass_returned_kg }}
+                kg
+              </li>
+              <li>Nationality: {{ payload.nationality }}</li>
+              <li>Manufacturer: {{ payload.manufacturer }}</li>
+              <li>Customers: {{ payload.customers }}</li>
+            </ul>
+            <a
+              *ngIf="payload.cargo_manifest"
+              href="{{ payload.cargo_manifest }}"
+              target="_blank"
+              ><button color="primary" mat-raised-button>
+                Cargo Manifest PDF
+              </button>
+            </a>
+          </div>
+        </ng-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="close()">
+    Close
+  </button>
+</mat-dialog-actions>

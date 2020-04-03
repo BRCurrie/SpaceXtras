@@ -1,0 +1,13 @@
+$app-theme-primary: mat-palette($mat-indigo, 700);
+$app-theme-accent: mat-palette($mat-blue-grey);
+$app-theme-warn: mat-palette($mat-blue-grey);
+
+$app-theme: mat-light-theme(
+  $app-theme-primary,
+  $app-theme-accent,
+  $app-theme-warn
+);
+
+// Below line is not present in ng-material default theme file,
+// but breaks my theme if removed...
+@include angular-material-theme($app-theme);

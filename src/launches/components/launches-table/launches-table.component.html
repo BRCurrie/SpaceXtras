@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="mat-elevation-z8">
+    <!-- Search Bar -->
+    <mat-form-field>
+      <mat-label>Search by name</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event, 'mission_name')"
+        placeholder="e.g. Falcon"
+      />
+    </mat-form-field>
+
+    <!-- Loading spinner -->
+    <mat-card
+      *ngIf="isLoading; else table"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <mat-progress-spinner color="primary" mode="indeterminate">
+      </mat-progress-spinner>
+    </mat-card>
+
+    <!-- Table -->
+    <ng-template #table>
+      <table
+        mat-table
+        class="full-width-table"
+        [dataSource]="dataSource"
+        matSort
+        aria-label="Elements"
+      >
+        <!-- Flight Number Column -->
+        <ng-container matColumnDef="flight_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Flight No.</th>
+          <td mat-cell *matCellDef="let row">{{ row.flight_number }}</td>
+        </ng-container>
+
+        <!-- Mission Name Column -->
+        <ng-container matColumnDef="mission_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Mission Name
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.mission_name }}</td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="launch_date_local">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.launch_date_local | date: "shortDate" }}
+          </td>
+        </ng-container>
+        <!-- Success Column -->
+
+        <ng-container matColumnDef="launch_success">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Success</th>
+          <td mat-cell *matCellDef="let row">
+            <fa-icon
+              [icon]="faCheckCircle"
+              *ngIf="row.launch_success"
+            ></fa-icon>
+          </td>
+        </ng-container>
+        <tr
+          class="header-row"
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns; index as launchId"
+          (click)="openDialog(row)"
+        ></tr>
+      </table>
+    </ng-template>
+
+    <mat-paginator
+      #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[10, 20, 50, dataSource.data.length]"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- Replace info in html, ts, and datasource.ts -->
+<!-- Create Service -->
+<!-- Create interface(s) -->
+<!-- Display that data! -->
+
+<!-- The code below  belongs in the tr w/ routerLink -->
+<!-- I'm not set on what i want displayed there so I have removed it for now. -->
+<!-- [title]="'Flight no. ' + row.flight_number + ' details'" -->
+
+<!-- <span *ngIf="row.upcoming" class="date__hightlight"> </span> -->

@@ -1,0 +1,33 @@
+$break-small: 640px;
+$break-large: 1200px;
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.mat-dialog-title {
+  vertical-align: middle;
+  margin-left: 2rem;
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tab-child {
+  flex: 1 1 33%;
+  @media screen and (max-width: $break-small) {
+    flex: 1 1 100%;
+  }
+  @media screen and (min-width: $break-small) and (max-width: $break-large) {
+    flex: 1 1 50%;
+  }
+}
