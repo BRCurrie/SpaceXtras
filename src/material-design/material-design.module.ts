@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 
+// Angular Material
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatCardModule } from "@angular/material/card";
@@ -26,36 +27,26 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { CdkTableModule } from "@angular/cdk/table";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+// Font Awesome
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from "@fortawesome/angular-fontawesome";
 
-// library currently does not work and is not available in components.
-// because I am not reusing any icon in more than one component,
-// I dont need to worry about it just yet.
-// If I do decide to change this, I should probably make it a
-// standalone feature module.
+import {
+  faBars,
+  faCheckCircle,
+  faNewspaper,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faReddit,
+  faWikipediaW,
+} from "@fortawesome/free-brands-svg-icons";
 
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import {
-//   faBars,
-//   faCheckCircle,
-//   faNewspaper
-// } from "@fortawesome/free-solid-svg-icons";
-// import {
-//   faGithub,
-//   faReddit,
-//   faWikipediaW
-// } from "@fortawesome/free-brands-svg-icons";
-
-// library.add(
-//   faBars,
-//   faGithub,
-//   faCheckCircle,
-//   faNewspaper,
-//   faReddit,
-//   faWikipediaW
-// );
-
+// module array for imports/exports
 const modules: any[] = [
   MatButtonModule,
   MatCheckboxModule,
@@ -83,12 +74,26 @@ const modules: any[] = [
   MatTooltipModule,
   MatButtonToggleModule,
   MatSnackBarModule,
-  FontAwesomeModule
+  MatSlideToggleModule,
+  FontAwesomeModule,
 ];
 
 // Declare Module that imports/exports the @angular/material modules needed in the app
 @NgModule({
   imports: [...modules],
-  exports: [...modules]
+  exports: [...modules],
 })
-export class MaterialDesignModule {}
+export class MaterialDesignModule {
+  constructor(library: FaIconLibrary) {
+    // If icon pack is added instead of individual imports
+    //  library.addIconPacks(fas);
+    library.addIcons(
+      faBars,
+      faGithub,
+      faCheckCircle,
+      faNewspaper,
+      faReddit,
+      faWikipediaW
+    );
+  }
+}

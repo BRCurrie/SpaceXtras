@@ -1,14 +1,37 @@
 import { Component, OnInit } from "@angular/core";
 
+import { MatTableDataSource } from "@angular/material";
+
+import { LaunchService } from "../../services/launch.service";
+
+import { Launch } from "../../interfaces/launch";
+
 @Component({
   selector: "app-launch-container",
   template: `
-    <app-launches-table></app-launches-table>
+    <app-launches-table
+      [dataSource]="dataSource"
+      [isLoading]="isLoading"
+    ></app-launches-table>
   `,
-  styles: []
+  styles: [],
 })
 export class LaunchContainerComponent implements OnInit {
-  constructor() {}
+  dataSource: MatTableDataSource<Launch>;
+  isLoading = true;
 
-  ngOnInit() {}
+  constructor(private launchService: LaunchService) {}
+
+  getAllLaunches() {
+    this.launchService.getAllLaunches().subscribe((data: Launch[]) => {
+      this.dataSource.data = data;
+      this.isLoading = false;
+      return data;
+    });
+  }
+
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource();
+    this.getAllLaunches();
+  }
 }

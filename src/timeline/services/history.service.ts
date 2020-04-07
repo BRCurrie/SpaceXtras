@@ -4,14 +4,14 @@ import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class HistoryService {
   private getHistoryUrl = "https://api.spacexdata.com/v3/history";
 
   constructor(private http: HttpClient) {}
 
-  getHistoryApi(): any {
+  getHistory(): any {
     // expect a get request to SpaceX
     return this.http.get<History>(this.getHistoryUrl).pipe(
       // it should retry 3 times.

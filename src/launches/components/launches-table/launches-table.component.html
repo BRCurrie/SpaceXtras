@@ -13,7 +13,7 @@
     <!-- Loading spinner -->
     <mat-card
       *ngIf="isLoading; else table"
-      style="display: flex; justify-content: center; align-items: center"
+      style="display: flex; justify-content: center; align-items: center;"
     >
       <mat-progress-spinner color="primary" mode="indeterminate">
       </mat-progress-spinner>
@@ -23,9 +23,9 @@
     <ng-template #table>
       <table
         mat-table
+        matSort
         class="full-width-table"
         [dataSource]="dataSource"
-        matSort
         aria-label="Elements"
       >
         <!-- Flight Number Column -->
@@ -54,10 +54,7 @@
         <ng-container matColumnDef="launch_success">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Success</th>
           <td mat-cell *matCellDef="let row">
-            <fa-icon
-              [icon]="faCheckCircle"
-              *ngIf="row.launch_success"
-            ></fa-icon>
+            <fa-icon icon="check-circle" *ngIf="row.launch_success"></fa-icon>
           </td>
         </ng-container>
         <tr
@@ -83,13 +80,3 @@
     </mat-paginator>
   </div>
 </div>
-<!-- Replace info in html, ts, and datasource.ts -->
-<!-- Create Service -->
-<!-- Create interface(s) -->
-<!-- Display that data! -->
-
-<!-- The code below  belongs in the tr w/ routerLink -->
-<!-- I'm not set on what i want displayed there so I have removed it for now. -->
-<!-- [title]="'Flight no. ' + row.flight_number + ' details'" -->
-
-<!-- <span *ngIf="row.upcoming" class="date__hightlight"> </span> -->

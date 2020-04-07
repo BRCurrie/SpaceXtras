@@ -1,12 +1,11 @@
-import { OnInit, Component, ViewChild, OnDestroy } from "@angular/core";
+import { OnInit, Component, Input, ViewChild } from "@angular/core";
+
 import {
+  MatDialog,
   MatPaginator,
   MatSort,
-  MatDialog,
-  MatTableDataSource
+  MatTableDataSource,
 } from "@angular/material";
-import { LaunchService } from "../../services/launch.service";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { MatDialogConfig } from "@angular/material/dialog";
 import { LaunchesModalComponent } from "../launches-modal/launches-modal.component";
 import { Launch } from "../../interfaces/launch";
@@ -14,26 +13,26 @@ import { Launch } from "../../interfaces/launch";
 @Component({
   selector: "app-launches-table",
   templateUrl: "./launches-table.component.html",
-  styleUrls: ["./launches-table.component.css"]
+  styleUrls: ["./launches-table.component.css"],
 })
-export class LaunchesTableComponent implements OnInit, OnDestroy {
+export class LaunchesTableComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  dataSource: MatTableDataSource<Launch>;
-  isLoading = true;
 
-  faCheckCircle = faCheckCircle;
-  constructor(
-    private launchService: LaunchService,
-    private matDialog: MatDialog
-  ) {}
+  @Input()
+  dataSource: MatTableDataSource<Launch>;
+
+  @Input()
+  isLoading: boolean;
+
+  constructor(private matDialog: MatDialog) {}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     "flight_number",
     "mission_name",
     "launch_date_local",
-    "launch_success"
+    "launch_success",
   ];
 
   // Pass data into the dialog/modal
@@ -41,7 +40,6 @@ export class LaunchesTableComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { launches: row };
     this.matDialog.open(LaunchesModalComponent, dialogConfig);
-    // console.log(row);
   }
 
   // filterPredicate to search mission_name column only
@@ -50,7 +48,7 @@ export class LaunchesTableComponent implements OnInit, OnDestroy {
     const filterValue = (event.target as HTMLInputElement).value;
     this.filterObj = {
       value: filterValue.trim().toLowerCase(),
-      key: key
+      key: key,
     };
     this.dataSource.filter = filterValue;
     if (this.dataSource.paginator) {
@@ -58,17 +56,7 @@ export class LaunchesTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  getAllLaunches() {
-    this.launchService.getAllLaunches().subscribe((data: Launch[]) => {
-      this.dataSource.data = data;
-      this.isLoading = false;
-      return data;
-    });
-  }
-
   ngOnInit() {
-    this.dataSource = new MatTableDataSource();
-    this.getAllLaunches();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate = (data, filter) => {
@@ -79,9 +67,5 @@ export class LaunchesTableComponent implements OnInit, OnDestroy {
       }
       return false;
     };
-  }
-
-  ngOnDestroy() {
-    // this.dataSource.disconnect();
   }
 }

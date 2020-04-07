@@ -6,12 +6,12 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "app-sidenav",
   templateUrl: "./sidenav.component.html",
-  styleUrls: ["./sidenav.component.scss"]
+  styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
-    .pipe(map(result => result.matches));
+    .pipe(map((result) => result.matches));
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

@@ -1,8 +1,14 @@
+<!-- Both Tabs - Change the format of Payloads and the Cores containers
+away from lists to display the data better. -->
+
+<!-- Payload Tab:
+  - customers may need to be made into an ngFor list.
+  - replace pipe works.
+-->
+
+<!-- Cores Tab - Need to change intent/success to an icon or to specific wording -->
+
 <div class="header-container">
-  <!-- <img
-    alt="Mission Patch"
-    src="{{ data.launches.links.mission_patch_small }}"
-  /> -->
   <h2 mat-dialog-title>{{ data.launches.mission_name }}</h2>
 </div>
 <mat-dialog-content>
@@ -69,7 +75,10 @@
               </li>
               <li>Nationality: {{ payload.nationality }}</li>
               <li>Manufacturer: {{ payload.manufacturer }}</li>
-              <li>Customers: {{ payload.customers }}</li>
+              <li>
+                Customers:
+                {{ payload.customers.toString() | replace: ",":", " }}
+              </li>
             </ul>
             <a
               *ngIf="payload.cargo_manifest"

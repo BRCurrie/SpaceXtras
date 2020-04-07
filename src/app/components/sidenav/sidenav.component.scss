@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+// @import "~@angular/material/theming";
 
 .app-content {
   position: absolute;
@@ -26,6 +26,7 @@
       flex: 1 1 auto;
       position: relative;
       overflow-y: auto;
+      margin: 0;
     }
   }
 }
