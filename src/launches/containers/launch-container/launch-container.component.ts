@@ -9,15 +9,16 @@ import { Launch } from "../../interfaces/launch";
 @Component({
   selector: "app-launch-container",
   template: `
-    <app-launches-table
-      [dataSource]="dataSource"
-      [isLoading]="isLoading"
-    ></app-launches-table>
+    <app-loading-spinner *ngIf="isLoading; else table"> </app-loading-spinner>
+    <ng-template #table>
+      <app-launches-table [dataSource]="dataSource"></app-launches-table>
+    </ng-template>
   `,
   styles: [],
 })
 export class LaunchContainerComponent implements OnInit {
   dataSource: MatTableDataSource<Launch>;
+
   isLoading = true;
 
   constructor(private launchService: LaunchService) {}

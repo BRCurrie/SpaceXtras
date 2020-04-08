@@ -28,7 +28,7 @@ export class LaunchesTableDataSource extends DataSource<Launch> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
-      this.sort.sortChange
+      this.sort.sortChange,
     ];
 
     // Set the paginator's length

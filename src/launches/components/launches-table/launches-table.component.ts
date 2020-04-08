@@ -7,7 +7,9 @@ import {
   MatTableDataSource,
 } from "@angular/material";
 import { MatDialogConfig } from "@angular/material/dialog";
+
 import { LaunchesModalComponent } from "../launches-modal/launches-modal.component";
+
 import { Launch } from "../../interfaces/launch";
 
 @Component({

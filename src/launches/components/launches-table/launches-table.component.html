@@ -10,65 +10,53 @@
       />
     </mat-form-field>
 
-    <!-- Loading spinner -->
-    <mat-card
-      *ngIf="isLoading; else table"
-      style="display: flex; justify-content: center; align-items: center;"
+    <table
+      mat-table
+      matSort
+      class="full-width-table"
+      [dataSource]="dataSource"
+      aria-label="Elements"
     >
-      <mat-progress-spinner color="primary" mode="indeterminate">
-      </mat-progress-spinner>
-    </mat-card>
+      <!-- Flight Number Column -->
+      <ng-container matColumnDef="flight_number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Flight No.</th>
+        <td mat-cell *matCellDef="let row">{{ row.flight_number }}</td>
+      </ng-container>
 
-    <!-- Table -->
-    <ng-template #table>
-      <table
-        mat-table
-        matSort
-        class="full-width-table"
-        [dataSource]="dataSource"
-        aria-label="Elements"
-      >
-        <!-- Flight Number Column -->
-        <ng-container matColumnDef="flight_number">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Flight No.</th>
-          <td mat-cell *matCellDef="let row">{{ row.flight_number }}</td>
-        </ng-container>
+      <!-- Mission Name Column -->
+      <ng-container matColumnDef="mission_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Mission Name
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.mission_name }}</td>
+      </ng-container>
 
-        <!-- Mission Name Column -->
-        <ng-container matColumnDef="mission_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Mission Name
-          </th>
-          <td mat-cell *matCellDef="let row">{{ row.mission_name }}</td>
-        </ng-container>
+      <!-- Date Column -->
+      <ng-container matColumnDef="launch_date_local">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.launch_date_local | date: "shortDate" }}
+        </td>
+      </ng-container>
+      <!-- Success Column -->
 
-        <!-- Date Column -->
-        <ng-container matColumnDef="launch_date_local">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-          <td mat-cell *matCellDef="let row">
-            {{ row.launch_date_local | date: "shortDate" }}
-          </td>
-        </ng-container>
-        <!-- Success Column -->
-
-        <ng-container matColumnDef="launch_success">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Success</th>
-          <td mat-cell *matCellDef="let row">
-            <fa-icon icon="check-circle" *ngIf="row.launch_success"></fa-icon>
-          </td>
-        </ng-container>
-        <tr
-          class="header-row"
-          mat-header-row
-          *matHeaderRowDef="displayedColumns; sticky: true"
-        ></tr>
-        <tr
-          mat-row
-          *matRowDef="let row; columns: displayedColumns; index as launchId"
-          (click)="openDialog(row)"
-        ></tr>
-      </table>
-    </ng-template>
+      <ng-container matColumnDef="launch_success">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Success</th>
+        <td mat-cell *matCellDef="let row">
+          <fa-icon icon="check-circle" *ngIf="row.launch_success"></fa-icon>
+        </td>
+      </ng-container>
+      <tr
+        class="header-row"
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns; index as launchId"
+        (click)="openDialog(row)"
+      ></tr>
+    </table>
 
     <mat-paginator
       #paginator
