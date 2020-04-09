@@ -2,7 +2,7 @@ import { DataSource } from "@angular/cdk/collections";
 import { MatPaginator, MatSort } from "@angular/material";
 import { map } from "rxjs/operators";
 import { Observable, of as observableOf, merge } from "rxjs";
-import { Launch } from "src/launches/interfaces/launch";
+import { Launch } from "../../../shared/interfaces/launch";
 
 /**
  * Data source for the LaunchesTable view. This class should

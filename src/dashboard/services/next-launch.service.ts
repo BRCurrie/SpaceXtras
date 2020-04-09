@@ -4,19 +4,19 @@ import { throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 
 // Interface
-import { Roadster } from "../interfaces/roadster";
+import { Launch } from "../../shared/interfaces/launch";
 
 @Injectable({
   providedIn: "root",
 })
-export class RoadsterService {
-  private roadsterUrl = "https://api.spacexdata.com/v3/roadster";
+export class NextLaunchService {
+  apiUrl = "https://api.spacexdata.com/v3/launches/next";
 
   constructor(private http: HttpClient) {}
 
   getRoadster(): any {
     // expect a get request to SpaceX
-    return this.http.get<Roadster>(this.roadsterUrl).pipe(
+    return this.http.get<Launch>(this.apiUrl).pipe(
       // it should retry 3 times.
       retry(3),
       catchError(this.handleError)

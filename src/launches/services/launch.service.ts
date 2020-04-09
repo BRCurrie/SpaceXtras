@@ -2,16 +2,16 @@ import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 
 // Interface
-import { Launch } from "../interfaces/launch";
+import { Launch } from "../../shared/interfaces/launch";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class LaunchService {
   private allLaunchesUrl = "https://api.spacexdata.com/v3/launches";

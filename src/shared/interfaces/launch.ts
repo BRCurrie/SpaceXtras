@@ -1,6 +1,10 @@
 import { Rocket } from "./rocket";
 
+// Used by multiple modules
+// Launches - all launches
 // https://api.spacexdata.com/v3/launches
+// Dashboard - next launch
+// https://api.spacexdata.com/v3/launches/next
 
 // Figure out why so many are just null
 export interface Launch extends Rocket {

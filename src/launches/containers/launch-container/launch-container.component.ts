@@ -4,7 +4,7 @@ import { MatTableDataSource } from "@angular/material";
 
 import { LaunchService } from "../../services/launch.service";
 
-import { Launch } from "../../interfaces/launch";
+import { Launch } from "../../../shared/interfaces/launch";
 
 @Component({
   selector: "app-launch-container",

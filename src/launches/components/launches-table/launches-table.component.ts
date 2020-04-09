@@ -10,7 +10,7 @@ import { MatDialogConfig } from "@angular/material/dialog";
 
 import { LaunchesModalComponent } from "../launches-modal/launches-modal.component";
 
-import { Launch } from "../../interfaces/launch";
+import { Launch } from "../../../shared/interfaces/launch";
 
 @Component({
   selector: "app-launches-table",
