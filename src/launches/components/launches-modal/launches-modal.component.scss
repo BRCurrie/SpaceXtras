@@ -1,12 +1,9 @@
-$break-small: 640px;
-$break-medium: 768px;
-$break-large: 1200px;
+@import "~@angular/material/theming";
+@import "../../../styles-variables.scss";
 
 .header-container {
   display: flex;
 }
-
-// .mat-dialog-content {}
 
 .mat-dialog-title {
   vertical-align: middle;
@@ -21,8 +18,12 @@ $break-large: 1200px;
 }
 
 .tab-child {
-  flex: 1 1 50%;
-  @media screen and (max-width: $break-small) {
+  flex: 1 1 33%;
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
     flex: 1 1 100%;
+  }
+  @media (max-width: map-get($grid-breakpoints, xl)) and (min-width: map-get($grid-breakpoints, md)) {
+    flex: 1 1 50%;
   }
 }

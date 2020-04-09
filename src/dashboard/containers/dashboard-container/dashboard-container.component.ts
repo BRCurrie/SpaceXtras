@@ -8,10 +8,15 @@ import { NextLaunchService } from "../../services/next-launch.service";
 
 @Component({
   selector: "app-dashboard-container",
-  template: ` <app-dashboard [nextLaunch]="data$ | async"></app-dashboard> `,
+  template: `
+    <app-jumbotron [background]="bgImg"></app-jumbotron>
+    <app-dashboard [nextLaunch]="data$ | async"></app-dashboard>
+  `,
   styles: [],
 })
 export class DashboardContainerComponent implements OnInit {
+  bgImg: string = "dashboardImage";
+
   data$: Observable<Launch>;
 
   constructor(private nextLaunchService: NextLaunchService) {}
@@ -20,5 +25,10 @@ export class DashboardContainerComponent implements OnInit {
     this.data$ = this.nextLaunchService
       .getRoadster()
       .pipe(map((nextLaunch) => nextLaunch));
+
+    // this.bgImg = "dashboardImage";
   }
 }
+
+// <app-jumbotron [background]="bgImg"></app-jumbotron>
+// bgImg: string = "";

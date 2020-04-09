@@ -2,6 +2,14 @@
   padding: 4em;
 } */
 
+.table-container {
+  padding: 4em;
+}
+
+.mat-form-field {
+  padding: 7px 24px;
+}
+
 .full-width-table {
   width: 100%;
 }

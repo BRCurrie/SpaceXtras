@@ -28,7 +28,9 @@
         >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <h1 class="app-brand">SpaceX Data</h1>
+        <a mat-button routerLink="/dashboard">
+          <h1 class="app-brand">SpaceX Data</h1>
+        </a>
         <span *ngIf="!(isHandset$ | async)">
           <a mat-button routerLink="/launches">Launches</a>
           <a mat-button routerLink="/roadster">Roadster</a>

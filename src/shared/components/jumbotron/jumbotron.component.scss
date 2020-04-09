@@ -1,0 +1,54 @@
+// Replace pictures with alternate sizes as needed.
+// @import "~@angular/material/theming";
+// @import "../../../styles-variables.scss";
+// @media (max-width: map-get($grid-breakpoints, lg)) {
+//   }
+
+.jumbotron {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+  color: white;
+  max-width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.jumbotron.dashboardImage {
+  background-image: url("src/assets/img/starlink_launch.jpg");
+}
+
+.jumbotron.launchesImage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("src/assets/img/starlink_launch.jpg");
+}
+
+// this image looks good regardless of screen size. No @media required
+.jumbotron.roadsterImage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("src/assets/img/roadster_inside.jpg");
+}
+
+// .jumbotron.timelineImage {
+// background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+//   url("src/assets/img/roadster_inside.jpg");
+// }
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 4rem 2rem;
+  }
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
