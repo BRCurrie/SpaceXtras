@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+
 import { Roadster } from "../../interfaces/roadster";
 
 @Component({
@@ -9,6 +10,4 @@ import { Roadster } from "../../interfaces/roadster";
 export class RoadsterComponent {
   @Input()
   roadster: Roadster;
-
-  constructor() {}
 }

@@ -15,7 +15,7 @@ import { Launch } from "../../../shared/interfaces/launch";
 @Component({
   selector: "app-launches-table",
   templateUrl: "./launches-table.component.html",
-  styleUrls: ["./launches-table.component.css"],
+  styleUrls: ["./launches-table.component.scss"],
 })
 export class LaunchesTableComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

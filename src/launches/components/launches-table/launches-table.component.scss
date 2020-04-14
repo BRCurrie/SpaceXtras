@@ -1,10 +1,14 @@
-/* .container {
-  padding: 4em;
-} */
-
-.table-container {
+.container {
   padding: 4em;
 }
+
+.card-container {
+  padding-bottom: 4em;
+}
+
+// .table-container {
+//   padding: 4em;
+// }
 
 .mat-form-field {
   padding: 7px 24px;
@@ -34,4 +38,5 @@
 
 .mat-row:hover {
   background-color: #c6c6c6;
+  cursor: pointer;
 }

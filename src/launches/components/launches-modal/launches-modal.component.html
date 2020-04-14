@@ -1,12 +1,7 @@
 <!-- Both Tabs - Change the format of Payloads and the Cores containers
 away from lists to display the data better. -->
-
-<!-- Payload Tab:
-  - customers may need to be made into an ngFor list.
-  - replace pipe works.
--->
-
 <!-- Cores Tab - Need to change intent/success to an icon or to specific wording -->
+
 <div class="header-container">
   <h2 mat-dialog-title>{{ data.launches.mission_name }}</h2>
 </div>
@@ -16,7 +11,7 @@ away from lists to display the data better. -->
   <p>Date: {{ data.launches.launch_date_local | date: "longDate" }}</p>
   <p>Launch Site: {{ data.launches.launch_site.site_name_long }}</p>
   <p>{{ data.launches.details }}</p>
-  <mat-tab-group>
+  <mat-tab-group animationDuration="750ms" dynamicHeight="true">
     <!-- Cores Tab -->
     <mat-tab label="Cores">
       <div class="tab-container">
@@ -27,16 +22,16 @@ away from lists to display the data better. -->
             <h4>
               {{ core.core_serial }}
             </h4>
-            <ul>
+            <ul *ngIf="core.landing_intent; else noLanding">
               <li>Flight: {{ core.flight }}</li>
-              <li>Reused {{ core.reused }}</li>
-              <li>
-                Landing Success:
-                {{ core.land_success }}
-              </li>
+              <li>Reused: {{ core.reused }}</li>
               <li>
                 Landing Intent:
                 {{ core.landing_intent }}
+              </li>
+              <li>
+                Landing Success:
+                {{ core.land_success }}
               </li>
               <li>
                 Landing Type:
@@ -47,6 +42,12 @@ away from lists to display the data better. -->
                 {{ core.landing_vehicle }}
               </li>
             </ul>
+            <ng-template #noLanding>
+              <ul>
+                <li>Flight: {{ core.flight }}</li>
+                <li>Landing intent: {{ core.landing_intent }}</li>
+              </ul>
+            </ng-template>
           </div>
         </ng-container>
       </div>
@@ -62,7 +63,7 @@ away from lists to display the data better. -->
             <h4>{{ payload.payload_id }}</h4>
             <ul>
               <li>Type: {{ payload.payload_type }}</li>
-              <li>Orbit: {{ payload.orbit }}</li>
+              <li>Orbit: {{ payload.orbit | orbitType }}</li>
               <li *ngIf="payload.payload_mass_kg">
                 Mass:
                 {{ payload.payload_mass_kg }} kg
@@ -98,3 +99,5 @@ away from lists to display the data better. -->
     Close
   </button>
 </mat-dialog-actions>
+
+<!-- Orbit types: VLEO, LEO, ISS, PO, GTO, ES-L1, HCO, SSO, MEO, SO, TLI -->

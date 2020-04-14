@@ -8,11 +8,11 @@ $grid-breakpoints: (
   xl: 1200px,
 );
 
-// $success-colors: mat-palette($mat-green, 400);
+// $background: mat-palette($mat-green, 400);
 // $warning-colors: mat-palette($mat-amber, 400);
 
 //  To use this code in components, import as below, then map-get variables
-// @import '~@angular/material/theming'
+// @import '~@angular/material/theming';
 // @import '~./styles-variables';
 
 // @media (max-width: map-get($grid-breakpoints, lg)) {

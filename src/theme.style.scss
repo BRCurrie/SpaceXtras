@@ -1,24 +1,29 @@
 // Theme
 @import "~@angular/material/theming";
-@import "~angular-mgl-timeline/theme";
+// @import "~angular-mgl-timeline/theme";
 
 @include mat-core();
 
+// My Themes & Components
 @import "./themes/app-theme";
 // @import './themes/app-light-theme';
-// @import "./app/components/timeline/timeline.component.theme.scss";
+@import "./timeline/components/timeline/timeline.component.scss-theme.scss";
+// @import "./roadster/components/roadster/roadster.component.scss-theme.scss";
+@import "./app/components/sidenav/sidenav.component.scss-theme.scss";
 
-// @mixin custom-components-theme($theme) {
-//   @include app-timeline-theme($theme);
-// }
+@mixin custom-components-theme($theme) {
+  // @include mgl-timeline-theme($theme);
+  @include timeline-component-theme($theme);
+  // @include roadster-component-theme($theme);
+  @include sidenav-component-theme($theme);
+}
+
 .app-theme {
   @include angular-material-theme($app-theme);
-  // @include app-timeline-theme($app-theme);
+  @include custom-components-theme($app-theme);
 }
 
 // .app-light-theme {
 //   @include angular-material-theme($app-light-theme);
-//   @include app-timeline-theme($theme);
+//   @include custom-components-theme($app-dark-theme);
 // }
-
-@include mgl-timeline-theme($app-theme);

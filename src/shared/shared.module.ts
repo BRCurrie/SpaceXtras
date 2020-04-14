@@ -6,11 +6,12 @@ import { MaterialDesignModule } from "src/material-design";
 import * as fromComponents from "./components";
 
 import { ReplacePipe } from "./pipes/replace.pipe";
+import { OrbitTypePipe } from "./pipes/orbitType.pipe";
 
 @NgModule({
-  declarations: [ReplacePipe, ...fromComponents.components],
+  declarations: [ReplacePipe, OrbitTypePipe, ...fromComponents.components],
   imports: [CommonModule, MaterialDesignModule],
-  exports: [ReplacePipe, ...fromComponents.components],
+  exports: [ReplacePipe, OrbitTypePipe, ...fromComponents.components],
   providers: [],
 })
 export class SharedModule {}

@@ -1,22 +1,41 @@
-// @import "~@angular/material/theming";
+@import "~@angular/material/theming";
 
-// @mixin app-timeline-component-theme($theme) {
-//   $primary: map-get($theme, primary);
-//   $warn: map-get($theme, warn);
-// }
+@mixin timeline-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $typographyConfig: mat-typography-config();
 
-// app-timeline {
-//   .mat-button {
-//     color: mat-color($primary);
-//     // color: mat-color($warn);
-//   }
-// }
+  mgl-timeline {
+    font-family: mat-font-family($typographyConfig);
 
-// // change .mat-button class color in scss file if I get this working
-// // and I decide if I want it to be a theme color.
-// // .mat-button {
-// // color: mat-color($primary);
-// // }
+    & mgl-timeline-entry {
+      & .mgl-timeline-entry-card {
+        @include mat-elevation(4);
+        background-color: map-get($background, card) !important;
+        color: map-get($foreground, base);
 
-// // below line not present in stock-market-component theme from ng-material
-// // @include angular-material-theme(app-timeline-theme);
+        & .mgl-timeline-entry-card-header {
+          background-color: map-get($background, app-bar) !important;
+        }
+      }
+
+      & fa-icon {
+        color: mat-color($accent);
+      }
+
+      & mgl-timeline-entry-dot {
+        @include mat-elevation(2);
+
+        &.primary {
+          background-color: mat-color($primary, lighter);
+        }
+
+        &.accent {
+          background-color: mat-color($accent);
+        }
+      }
+    }
+  }
+}

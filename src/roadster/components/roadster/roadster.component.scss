@@ -1,8 +1,92 @@
-// .container {
-//   margin-top: -1em;
-//   background-image: url(src/assets/img/roadster_front.jpg);
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   height: inherit;
-// }
+@import "~@angular/material/theming";
+@import "../../../styles-variables.scss";
+
+.container {
+  text-align: center;
+  z-index: 0;
+}
+
+.content {
+  padding: 1em 2em;
+  z-index: 24;
+}
+
+.description {
+  line-height: 2em;
+}
+
+.video-container {
+  margin: 2em;
+  position: relative;
+  padding-bottom: 47%;
+  padding-top: 35px;
+  height: 0;
+  overflow: hidden;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bg-img-1 {
+  background-image: url(../../../assets/img/roadster_side_800.jpg);
+  position: relative;
+  background-attachment: fixed;
+  background-position: 63%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin: auto;
+  min-height: 500px;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    background-image: url(../../../assets/img/roadster_side_1920.jpg);
+    background-position: center;
+
+    min-height: 700px;
+  }
+}
+
+.bg-img-2 {
+  background-image: url(../../../assets/img/roadster_front_800.jpg);
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin: auto;
+  min-height: 500px;
+  z-index: 0;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    background-image: url(../../../assets/img/roadster_front_1920.jpg);
+    min-height: 700px;
+  }
+}
+
+.bg-img-3 {
+  background-image: url(../../../assets/img//roadster_payload_800.jpg);
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin: auto;
+  min-height: 500px;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    background-image: url(../../../assets/img/roadster_payload_2713.jpg);
+    min-height: 700px;
+  }
+}
+
+.shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 3px 3px 30px 0 #000000;
+  top: 0;
+  bottom: 0;
+}

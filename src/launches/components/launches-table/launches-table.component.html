@@ -1,14 +1,29 @@
 <div class="container">
+  <div class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <h3>Launch Manifest Table</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          SpaceX undertakes a variety of missions types. Select a mission for
+          additional information.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-form-field color="warn">
+    <mat-label>Search by name</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event, 'mission_name')"
+      placeholder="e.g. Falcon"
+    />
+  </mat-form-field>
+
   <div class="mat-elevation-z8 table-container">
     <!-- Search Bar -->
-    <mat-form-field>
-      <mat-label>Search by name</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event, 'mission_name')"
-        placeholder="e.g. Falcon"
-      />
-    </mat-form-field>
 
     <table
       mat-table
@@ -43,7 +58,11 @@
       <ng-container matColumnDef="launch_success">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Success</th>
         <td mat-cell *matCellDef="let row">
-          <fa-icon icon="check-circle" *ngIf="row.launch_success"></fa-icon>
+          <div [ngSwitch]="row.launch_success">
+            <fa-icon icon="check" *ngSwitchCase="true"></fa-icon>
+            <fa-icon *ngSwitchCase="false" icon="times"></fa-icon>
+            <span *ngSwitchCase="null">---</span>
+          </div>
         </td>
       </ng-container>
       <tr

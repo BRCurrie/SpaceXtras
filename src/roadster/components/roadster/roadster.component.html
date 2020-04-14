@@ -1,8 +1,76 @@
-<p>{{ roadster | json }}</p>
+<!-- <p>{{ roadster | json }}</p> -->
 
-<!-- "launch_mass_kg"
-"launch_mass_lbs" -->
+<div class="container">
+  <div class="header">
+    <mat-card>
+      <mat-card-title>{{ roadster.name }}</mat-card-title>
+      <mat-card-subtitle
+        >Launched
+        {{ roadster.launch_date_utc | date: "shortDate" }}</mat-card-subtitle
+      >
+      <mat-card-content
+        >{{ roadster.period_days | number: "1.0-0" }} days spent in
+        space.</mat-card-content
+      >
+    </mat-card>
+  </div>
 
-<!-- Include what information we can about the roadster in space! -->
+  <div class="bg-img-1">
+    <div class="shadow"></div>
+  </div>
 
-<!-- get photos for assets -->
+  <div class="description content">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ roadster.details }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="bg-img-2">
+    <div class="shadow"></div>
+  </div>
+
+  <div class="distance content">
+    <mat-card>
+      <mat-card-content>
+        <p>Travelling at {{ roadster.speed_mph | number: "1.0-0" }} mph.</p>
+        <p>
+          {{ roadster.earth_distance_mi | number: "1.0-0" }} miles from Earth.
+        </p>
+        <p>
+          {{ roadster.mars_distance_mi | number: "1.0-0" }} miles from Mars.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="bg-img-3">
+    <div class="shadow"></div>
+    <div class="shadow-2"></div>
+  </div>
+
+  <!-- <div class="numbers content">
+    <p>{{ roadster.norad_id }}</p>
+    <p>Epoch:{{ roadster.epoch_jd }}</p>
+    <p>Orbit type:{{ roadster.orbit_type }}</p>
+    <p>{{ roadster.apoapsis_au }}</p>
+    <p>{{ roadster.periapsis_au }}</p>
+    <p>{{ roadster.semi_major_axis_au }}</p>
+    <p>{{ roadster.eccentricity }}</p>
+    <p>{{ roadster.inclination }}</p>
+    <p>{{ roadster.longitude }}</p>
+    <p>{{ roadster.periapsis_arg }}</p>
+  </div> -->
+
+  <div class="video-container">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube-nocookie.com/embed/wbSwFU6tY1c"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>

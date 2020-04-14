@@ -12,7 +12,13 @@ fa-icon {
 mat-divider {
   margin: 1em;
 }
+mgl-timeline-entry-dot:hover {
+  cursor: pointer;
+}
 
-// .mat-button {
-//   color: white;
-// }
+mgl-timeline-entry-header:hover {
+  cursor: pointer;
+}
+
+// timeline line color in case I want to make section above match.
+// #a0a0a0

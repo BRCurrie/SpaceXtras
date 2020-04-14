@@ -37,8 +37,10 @@ import {
 
 import {
   faBars,
-  faCheckCircle,
+  faCheck,
   faNewspaper,
+  faChevronDown,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -90,10 +92,12 @@ export class MaterialDesignModule {
     library.addIcons(
       faBars,
       faGithub,
-      faCheckCircle,
+      faCheck,
+      faTimes,
       faNewspaper,
       faReddit,
-      faWikipediaW
+      faWikipediaW,
+      faChevronDown
     );
   }
 }
