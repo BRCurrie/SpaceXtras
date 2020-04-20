@@ -4,11 +4,20 @@
 .container {
   text-align: center;
   z-index: 0;
+  position: relative;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
 .content {
   padding: 1em 2em;
   z-index: 24;
+}
+
+mat-card {
+  padding: 2em 2em;
+  mat-card-content {
+    font-size: 1.1em;
+  }
 }
 
 .description {
@@ -17,6 +26,7 @@
 
 .video-container {
   margin: 2em;
+  margin-bottom: 0;
   position: relative;
   padding-bottom: 47%;
   padding-top: 35px;
@@ -31,11 +41,27 @@
   }
 }
 
+.img-container {
+  // height: 500px;
+  overflow: hidden;
+  z-index: 0;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    // height: 900px;
+  }
+}
+
+.par {
+  width: 60%;
+  height: auto;
+  position: relative;
+  margin: 2em;
+}
+
 .bg-img-1 {
   background-image: url(../../../assets/img/roadster_side_800.jpg);
   position: relative;
   background-attachment: fixed;
-  background-position: 63%;
+  // background-position: 63%;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -43,7 +69,7 @@
   min-height: 500px;
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url(../../../assets/img/roadster_side_1920.jpg);
-    background-position: center;
+    // background-position: center;
 
     min-height: 700px;
   }
@@ -62,7 +88,7 @@
   z-index: 0;
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url(../../../assets/img/roadster_front_1920.jpg);
-    min-height: 700px;
+    // min-height: 500px;
   }
 }
 
@@ -89,4 +115,92 @@
   box-shadow: inset 3px 3px 30px 0 #000000;
   top: 0;
   bottom: 0;
+}
+
+// Test Stuff
+
+// @import compass
+
+// n is number of stars required
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+// 700, 200, 100
+// .container {
+//   height: 100%;
+//   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+//   overflow: hidden;
+// }
+.stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animStar 50s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }
+}
+.stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: animStar 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+.stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation: animStar 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+span {
+  background: -webkit-linear-gradient(white, #38495a);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+}
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }

@@ -14,7 +14,6 @@ import { LaunchesModule } from "../launches/launches.module";
 import { RoadsterModule } from "../roadster/roadster.module";
 import { TimelineModule } from "../timeline/timeline.module";
 import { DashboardModule } from "../dashboard/dashboard.module";
-// import { HistoryModule } from "../history/history.module";
 
 // My Components
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
@@ -35,7 +34,6 @@ import { LaunchesModalComponent } from "../launches/components/launches-modal/la
     RoadsterModule,
     TimelineModule,
     DashboardModule,
-    // HistoryModule,
   ],
   entryComponents: [LaunchesModalComponent],
   providers: [],

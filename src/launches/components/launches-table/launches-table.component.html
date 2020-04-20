@@ -1,9 +1,7 @@
 <div class="container">
   <div class="card-container">
-    <mat-card>
-      <mat-card-header>
-        <h3>Launch Manifest Table</h3>
-      </mat-card-header>
+    <mat-card style="text-align: center;">
+      <mat-card-title>Launch Manifest</mat-card-title>
       <mat-card-content>
         <p>
           SpaceX undertakes a variety of missions types. Select a mission for
@@ -14,7 +12,10 @@
   </div>
 
   <mat-form-field color="warn">
-    <mat-label>Search by name</mat-label>
+    <mat-label>
+      <fa-icon class="search-icon" icon="search"></fa-icon>
+      Search by name
+    </mat-label>
     <input
       matInput
       (keyup)="applyFilter($event, 'mission_name')"
@@ -61,7 +62,7 @@
           <div [ngSwitch]="row.launch_success">
             <fa-icon icon="check" *ngSwitchCase="true"></fa-icon>
             <fa-icon *ngSwitchCase="false" icon="times"></fa-icon>
-            <span *ngSwitchCase="null">---</span>
+            <span *ngSwitchCase="null">- - -</span>
           </div>
         </td>
       </ng-container>

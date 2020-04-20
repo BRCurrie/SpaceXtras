@@ -4,13 +4,19 @@ import { CommonModule } from "@angular/common";
 import { MaterialDesignModule } from "../material-design/material-design.module";
 import { SharedModule } from "../shared/shared.module";
 
+import { DashboardRoutingModule } from "./dashboard-routing.module";
 import * as fromComponents from "./components";
 import * as fromContainers from "./containers";
 
 import { NextLaunchService } from "./services/next-launch.service";
 
 @NgModule({
-  imports: [CommonModule, MaterialDesignModule, SharedModule],
+  imports: [
+    CommonModule,
+    MaterialDesignModule,
+    SharedModule,
+    DashboardRoutingModule,
+  ],
   providers: [NextLaunchService],
   declarations: [...fromComponents.components, ...fromContainers.components],
   exports: [...fromComponents.components, ...fromContainers.components],

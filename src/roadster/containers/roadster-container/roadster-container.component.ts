@@ -27,6 +27,7 @@ export class RoadsterContainerComponent implements OnInit {
   // The midnight cherry Tesla Roadster is piloted by Starman. It is the first standard roadworthy vehicle sent into space.
 
   data$: Observable<Roadster>;
+  isLoading = true;
 
   constructor(private roadsterService: RoadsterService) {}
 

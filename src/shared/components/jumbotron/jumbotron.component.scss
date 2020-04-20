@@ -9,7 +9,7 @@
   max-width: 100%;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   @media (min-width: map-get($grid-breakpoints, sm)) {
     padding: 4rem 2rem;
   }

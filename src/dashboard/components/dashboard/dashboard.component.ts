@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Launch } from "src/shared/interfaces/launch";
 
+// import { ParallaxDirective } from "./directives/parallax.directive";
+
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",

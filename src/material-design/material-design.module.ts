@@ -28,6 +28,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { CdkTableModule } from "@angular/cdk/table";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { ScrollingModule } from "@angular/cdk/scrolling";
 
 // Font Awesome
 import {
@@ -41,6 +42,7 @@ import {
   faNewspaper,
   faChevronDown,
   faTimes,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -78,6 +80,7 @@ const modules: any[] = [
   MatSnackBarModule,
   MatSlideToggleModule,
   FontAwesomeModule,
+  ScrollingModule,
 ];
 
 // Declare Module that imports/exports the @angular/material modules needed in the app
@@ -94,6 +97,7 @@ export class MaterialDesignModule {
       faGithub,
       faCheck,
       faTimes,
+      faSearch,
       faNewspaper,
       faReddit,
       faWikipediaW,

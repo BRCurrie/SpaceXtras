@@ -6,9 +6,12 @@
   padding-bottom: 4em;
 }
 
-// .table-container {
-//   padding: 4em;
-// }
+mat-card {
+  text-align: center;
+  mat-card-content {
+    font-size: 1.1em;
+  }
+}
 
 .mat-form-field {
   padding: 7px 24px;
@@ -16,6 +19,9 @@
 
 .full-width-table {
   width: 100%;
+  th {
+    font-size: 1em;
+  }
 }
 
 .mat-column-launch_success {

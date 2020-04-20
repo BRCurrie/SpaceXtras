@@ -38,10 +38,13 @@
         </span>
       </mat-toolbar-row>
     </mat-toolbar>
-    <main class="main-content-inner">
+    <main class="main-content-inner" (scroll)="onScrollEvent($event)">
       <!-- Add Content Here -->
       <section class="content-area">
-        <router-outlet></router-outlet>
+        <!-- <router-outlet></router-outlet> -->
+        <div [@routeAnimations]="prepareRoute(outlet)">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
       </section>
     </main>
   </mat-sidenav-content>

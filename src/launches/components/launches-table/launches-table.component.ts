@@ -31,8 +31,8 @@ export class LaunchesTableComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
-    "flight_number",
     "mission_name",
+    "flight_number",
     "launch_date_local",
     "launch_success",
   ];

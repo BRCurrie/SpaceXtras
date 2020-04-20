@@ -5,6 +5,7 @@ import { MaterialDesignModule } from "src/material-design";
 
 import * as fromComponents from "./components";
 
+// Pipes
 import { ReplacePipe } from "./pipes/replace.pipe";
 import { OrbitTypePipe } from "./pipes/orbitType.pipe";
 
