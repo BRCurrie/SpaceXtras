@@ -1,43 +1,33 @@
-import { Component, HostListener, Output, ElementRef } from "@angular/core";
+import { Component } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-
-import { ScrollDispatcher } from "@angular/cdk/scrolling";
 
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { RouterOutlet } from "@angular/router";
+import {
+  RouterOutlet,
+  Router,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationStart,
+  Event,
+  NavigationError,
+} from "@angular/router";
 
-import { fadeInAnimation } from "../../../shared/animations";
-import { slideInAnimation } from "../../../shared/animations/slide-in.animation";
-
-import { ScrollPositionService } from "../../../shared/services/scroll-position.service";
+import { fadeInAnimation } from "../../../shared/animations/fade-in.animation";
+import { routerAnimation } from "../../../shared/animations/router.animation";
 
 @Component({
   selector: "app-sidenav",
   templateUrl: "./sidenav.component.html",
   styleUrls: ["./sidenav.component.scss"],
-  animations: [fadeInAnimation, slideInAnimation],
+  animations: [fadeInAnimation, routerAnimation],
   host: { "[@fadeInAnimation]": "" },
 })
 export class SidenavComponent {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map((result) => result.matches));
-
-  @Output()
-  scrollRatio;
-
-  @HostListener("document:scroll", ["$event"]) onScrollEvent($event) {
-    var element = document.querySelector("main");
-    var scrollPosition = element.scrollTop;
-    var height = element.clientHeight;
-    var scrollHeight = element.scrollHeight - height;
-    this.scrollRatio = (scrollPosition / scrollHeight) * 100;
-    // console.log(this.scrollPosition);
-    this.scroll.updatedDataSelection(this.scrollRatio);
-    // console.log(this.scrollRatio);
-  }
 
   prepareRoute(outlet: RouterOutlet) {
     return (
@@ -47,8 +37,35 @@ export class SidenavComponent {
     );
   }
 
+  loading = false;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public scroll: ScrollPositionService // public scroll2: ScrollDispatcher
-  ) {}
+    private router: Router
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
+
+  // Angular Material puts everything in a scrollable container so
+  // we cannot use Angular's Route scrollPositionRestoration.
+  onActivate(event) {
+    document.getElementsByTagName("main")[0].scrollTo(0, 0);
+  }
 }

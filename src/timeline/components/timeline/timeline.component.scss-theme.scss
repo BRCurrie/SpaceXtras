@@ -13,14 +13,15 @@
     & mgl-timeline-entry {
       & .mgl-timeline-entry-card {
         @include mat-elevation(4);
+        border-radius: 4px;
         background-color: map-get($background, card) !important;
         color: map-get($foreground, base);
 
         & .mgl-timeline-entry-card-header {
-          background-color: map-get($background, app-bar) !important;
+          background-color: map-get($background, card) !important;
+          // changed from app-bar to card
         }
       }
-
       & fa-icon {
         color: mat-color($accent);
       }

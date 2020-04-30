@@ -1,39 +1,14 @@
-#content {
-  overflow: visible;
-  text-align: center;
-  font-size: 1.5rem;
-}
-#container {
+.container {
+  height: 100%;
   width: 100%;
-}
+  .earth {
+    transform: translate(47%, -140%);
+  }
 
-#square {
-  position: fixed;
-  z-index: -1;
-  top: 0px;
-  left: 0px;
-  width: 100px;
-  height: 100px;
-  background-color: green;
-}
-
-#rectangle {
-  position: fixed;
-  z-index: -1;
-  bottom: 0px;
-  left: 50px;
-  width: 200px;
-  height: 100px;
-  background-color: red;
-}
-
-#circle {
-  position: fixed;
-  z-index: -1;
-  bottom: 0px;
-  right: 0px;
-  width: 100px;
-  height: 100px;
-  background-color: yellow;
-  border-radius: 50px;
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-95%, 190%);
+  }
 }

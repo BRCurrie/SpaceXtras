@@ -5,28 +5,22 @@
   text-align: center;
   z-index: 0;
   position: relative;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-}
-
-.content {
-  padding: 1em 2em;
-  z-index: 24;
+  padding: 1rem;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 4rem;
+  }
 }
 
 mat-card {
   padding: 2em 2em;
   mat-card-content {
     font-size: 1.1em;
+    line-height: 2em;
   }
 }
 
-.description {
-  line-height: 2em;
-}
-
 .video-container {
-  margin: 2em;
-  margin-bottom: 0;
+  border-radius: 4px;
   position: relative;
   padding-bottom: 47%;
   padding-top: 35px;
@@ -41,166 +35,61 @@ mat-card {
   }
 }
 
-.img-container {
-  // height: 500px;
-  overflow: hidden;
-  z-index: 0;
-  @media (min-width: map-get($grid-breakpoints, md)) {
-    // height: 900px;
-  }
-}
-
-.par {
-  width: 60%;
-  height: auto;
-  position: relative;
-  margin: 2em;
-}
-
 .bg-img-1 {
+  border-radius: 4px;
+
   background-image: url(../../../assets/img/roadster_side_800.jpg);
   position: relative;
   background-attachment: fixed;
-  // background-position: 63%;
+  background-position: 63%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
-  margin: auto;
   min-height: 500px;
+  height: 500px;
+  transform: translateZ(0.3px) scale(0.8);
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url(../../../assets/img/roadster_side_1920.jpg);
-    // background-position: center;
+    background-position: center;
 
     min-height: 700px;
+    height: 700px;
   }
 }
 
 .bg-img-2 {
+  border-radius: 4px;
+
   background-image: url(../../../assets/img/roadster_front_800.jpg);
   position: relative;
   background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   width: 100%;
-  margin: auto;
   min-height: 500px;
-  z-index: 0;
+  transform: translateZ(0.3px) scale(0.8);
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url(../../../assets/img/roadster_front_1920.jpg);
-    // min-height: 500px;
+    min-height: 700px;
   }
 }
 
 .bg-img-3 {
+  border-radius: 4px;
+
   background-image: url(../../../assets/img//roadster_payload_800.jpg);
   position: relative;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
-  margin: auto;
   min-height: 500px;
+  transform: translateZ(0.3px) scale(0.8);
   @media (min-width: map-get($grid-breakpoints, md)) {
-    background-image: url(../../../assets/img/roadster_payload_2713.jpg);
+    background-image: url(../../../assets/img/roadster_load_1920.jpg);
     min-height: 700px;
-  }
-}
-
-.shadow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 3px 3px 30px 0 #000000;
-  top: 0;
-  bottom: 0;
-}
-
-// Test Stuff
-
-// @import compass
-
-// n is number of stars required
-@function multiple-box-shadow($n) {
-  $value: "#{random(2000)}px #{random(2000)}px #FFF";
-  @for $i from 2 through $n {
-    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
-  }
-  @return unquote($value);
-}
-
-$shadows-small: multiple-box-shadow(700);
-$shadows-medium: multiple-box-shadow(200);
-$shadows-big: multiple-box-shadow(100);
-// 700, 200, 100
-// .container {
-//   height: 100%;
-//   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-//   overflow: hidden;
-// }
-.stars {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-  }
-}
-.stars2 {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-  }
-}
-.stars3 {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  box-shadow: $shadows-big;
-  animation: animStar 150s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-  }
-}
-
-span {
-  background: -webkit-linear-gradient(white, #38495a);
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
-}
-@keyframes animStar {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-2000px);
   }
 }

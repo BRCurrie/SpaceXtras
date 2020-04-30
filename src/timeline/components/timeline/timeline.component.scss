@@ -1,3 +1,27 @@
+@import "~@angular/material/theming";
+@import "../../../styles-variables.scss";
+
+.container {
+  padding: 1rem;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 4rem;
+  }
+}
+
+.card-container {
+  padding-bottom: 4em;
+}
+
+mat-card {
+  text-align: center;
+  padding: 2em 2em;
+  mat-card-content {
+    font-size: 1.1em;
+    line-height: 2em;
+  }
+}
+
 .icon-container {
   width: inherit;
   display: flex;
@@ -12,13 +36,12 @@ fa-icon {
 mat-divider {
   margin: 1em;
 }
-mgl-timeline-entry-dot:hover {
+
+mgl-timeline-entry-dot {
   cursor: pointer;
 }
 
-mgl-timeline-entry-header:hover {
+mgl-timeline-entry-header {
   cursor: pointer;
+  border-radius: 4px;
 }
-
-// timeline line color in case I want to make section above match.
-// #a0a0a0

@@ -2,33 +2,18 @@
   <div class="header">
     <mat-card>
       <mat-card-title>{{ roadster.name }}</mat-card-title>
-      <mat-card-subtitle>
-        Launched {{ roadster.launch_date_utc | date: "shortDate" }}
-      </mat-card-subtitle>
       <mat-card-content>
-        The roadster has been in space for
+        The midnight cherry Tesla Roadster was launched on
+        {{ roadster.launch_date_utc | date: "shortDate" }}
+        and has been in space for
         {{ roadster.period_days | number: "1.0-0" }} days.</mat-card-content
       >
     </mat-card>
-    <!-- <button type="button" (click)="click()">Test</button> -->
   </div>
 
-  <!-- <div
-    class="bg-img-1"
-    [ngStyle]="{ 'background-position': 'center ' + scrollRatio * -1 + 'px' }"
-  >
-    <div class="shadow"></div>
-  </div> -->
+  <div class="bg-img-1"></div>
 
-  <div class="img-container">
-    <!-- <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div> -->
-    <!-- [ngStyle]="{ top: -scrollRatio * 1 + 'px' }" -->
-    <img class="par" src="../../../assets/img/roadster_side_1920.jpg" />
-  </div>
-
-  <div class="description content">
+  <div class="content">
     <mat-card>
       <mat-card-content>
         <p>{{ roadster.details }}</p>
@@ -36,19 +21,9 @@
     </mat-card>
   </div>
 
-  <!-- <div class="bg-img-2">
-    <div class="shadow"></div>
-  </div> -->
+  <div class="bg-img-2"></div>
 
-  <div class="img-container">
-    <!-- <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div> -->
-    <!-- [ngStyle]="{ top: -scrollRatio * 2 + 'px' }" -->
-    <img class="par" src="../../../assets/img/roadster_front_1920.jpg" />
-  </div>
-
-  <div class="distance content">
+  <div class="content">
     <mat-card>
       <mat-card-content>
         <p>
@@ -64,18 +39,7 @@
     </mat-card>
   </div>
 
-  <!-- <div class="bg-img-3">
-    <div class="shadow"></div>
-    <div class="shadow-2"></div>
-  </div> -->
-
-  <div class="img-container">
-    <!-- <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div> -->
-    <!-- [ngStyle]="{ top: -scrollRatio * 3.5 + 'px' }" -->
-    <img class="par" src="../../../assets/img/roadster_payload_2713.jpg" />
-  </div>
+  <div class="bg-img-3"></div>
 
   <!-- <div class="numbers content">
     <p>{{ roadster.norad_id }}</p>

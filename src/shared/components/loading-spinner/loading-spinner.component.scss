@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  width: 100%;
+  .earth {
+    transform: translate(45%, -140%);
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-95%, 190%);
+  }
+}

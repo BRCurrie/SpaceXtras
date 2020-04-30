@@ -1,9 +1,5 @@
 import { Injectable } from "@angular/core";
-import {
-  HttpClient,
-  HttpResponse,
-  HttpErrorResponse,
-} from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 
@@ -18,9 +14,9 @@ export class LaunchService {
 
   constructor(private http: HttpClient) {}
 
-  getAllLaunches(): any {
+  getAllLaunches(): Observable<Launch[]> {
     // expect a get request to SpaceX
-    return this.http.get<Launch>(this.allLaunchesUrl).pipe(
+    return this.http.get<Launch[]>(this.allLaunchesUrl).pipe(
       // it should retry 3 times.
       retry(3),
       catchError(this.handleError)

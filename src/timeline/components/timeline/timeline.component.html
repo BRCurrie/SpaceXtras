@@ -1,52 +1,66 @@
-<mgl-timeline focusOnOpen="true">
-  <mgl-timeline-entry *ngFor="let history of history">
-    <mgl-timeline-entry-header>{{
-      history.event_date_utc | date: "longDate"
-    }}</mgl-timeline-entry-header>
-    <mgl-timeline-entry-content>
-      <h3>{{ history.title }}</h3>
-      <div>
-        <div *ngIf="history.flight_number; else noFlight">
-          <div>Flight No: {{ history.flight_number }}</div>
-          <br />
-          {{ history.details }}
+<div class="container">
+  <div class="card-container">
+    <mat-card style="text-align: center;">
+      <mat-card-title>Major Events</mat-card-title>
+      <mat-card-content>
+        <p>
+          SpaceX has many historic milestones. Select a date below to explore
+          their achievements.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mgl-timeline focusOnOpen="true">
+    <mgl-timeline-entry *ngFor="let history of history">
+      <mgl-timeline-entry-header>{{
+        history.event_date_utc | date: "longDate"
+      }}</mgl-timeline-entry-header>
+      <mgl-timeline-entry-content>
+        <h3>{{ history.title }}</h3>
+        <div>
+          <div *ngIf="history.flight_number; else noFlight">
+            <div>Flight No: {{ history.flight_number }}</div>
+            <br />
+            {{ history.details }}
+          </div>
+          <ng-template #noFlight>
+            <div>{{ history.details }}</div>
+          </ng-template>
         </div>
-        <ng-template #noFlight>
-          <div>{{ history.details }}</div>
-        </ng-template>
-      </div>
-      <mat-divider></mat-divider>
-      <div class="icon-container">
-        <a
-          class="external-link"
-          href="{{ history.links.reddit }}"
-          target="_blank"
-          *ngIf="history.links.reddit"
-        >
-          <button mat-button matTooltip="Reddit">
-            <fa-icon [icon]="['fab', 'reddit']"> </fa-icon>
-          </button>
-        </a>
-        <a
-          href="{{ history.links.article }}"
-          target="_blank"
-          *ngIf="history.links.article"
-        >
-          <button mat-button matTooltip="News Article">
-            <fa-icon icon="newspaper"> </fa-icon>
-          </button>
-        </a>
-        <a
-          href="{{ history.links.wikipedia }}"
-          target="_blank"
-          *ngIf="history.links.wikipedia"
-        >
-          <button mat-button matTooltip="Wikipedia">
-            <fa-icon [icon]="['fab', 'wikipedia-w']"> </fa-icon>
-          </button>
-        </a>
-      </div>
-    </mgl-timeline-entry-content>
-    <mgl-timeline-entry-dot class="primary"> </mgl-timeline-entry-dot>
-  </mgl-timeline-entry>
-</mgl-timeline>
+        <mat-divider></mat-divider>
+        <div class="icon-container">
+          <a
+            class="external-link"
+            href="{{ history.links.reddit }}"
+            target="_blank"
+            *ngIf="history.links.reddit"
+          >
+            <button mat-button matTooltip="Reddit">
+              <fa-icon [icon]="['fab', 'reddit']"> </fa-icon>
+            </button>
+          </a>
+          <a
+            href="{{ history.links.article }}"
+            target="_blank"
+            *ngIf="history.links.article"
+          >
+            <button mat-button matTooltip="News Article">
+              <fa-icon icon="newspaper"> </fa-icon>
+            </button>
+          </a>
+          <a
+            href="{{ history.links.wikipedia }}"
+            target="_blank"
+            *ngIf="history.links.wikipedia"
+          >
+            <button mat-button matTooltip="Wikipedia">
+              <fa-icon [icon]="['fab', 'wikipedia-w']"> </fa-icon>
+            </button>
+          </a>
+        </div>
+      </mgl-timeline-entry-content>
+      <mgl-timeline-entry-dot class="primary"> </mgl-timeline-entry-dot>
+    </mgl-timeline-entry>
+  </mgl-timeline>
+</div>

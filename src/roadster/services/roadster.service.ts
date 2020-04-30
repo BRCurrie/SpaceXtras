@@ -1,10 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { throwError } from "rxjs";
+import { throwError, Observable } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
+
+// import "rxjs/add/observable/throw";
 
 // Interface
 import { Roadster } from "../interfaces/roadster";
+
+// Changed function type from any on getRoadster, added [] to get<Roadster>
 
 @Injectable({
   providedIn: "root",
@@ -14,9 +18,9 @@ export class RoadsterService {
 
   constructor(private http: HttpClient) {}
 
-  getRoadster(): any {
+  getRoadster(): Observable<Roadster[]> {
     // expect a get request to SpaceX
-    return this.http.get<Roadster>(this.roadsterUrl).pipe(
+    return this.http.get<Roadster[]>(this.roadsterUrl).pipe(
       // it should retry 3 times.
       retry(3),
       catchError(this.handleError)

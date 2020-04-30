@@ -1,5 +1,11 @@
+@import "~@angular/material/theming";
+@import "../../../styles-variables";
+
 .container {
-  padding: 4em;
+  padding: 1em;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 4em;
+  }
 }
 
 .card-container {
@@ -8,8 +14,10 @@
 
 mat-card {
   text-align: center;
+  padding: 2em 2em;
   mat-card-content {
     font-size: 1.1em;
+    line-height: 2em;
   }
 }
 
@@ -19,6 +27,7 @@ mat-card {
 
 .full-width-table {
   width: 100%;
+
   th {
     font-size: 1em;
   }
@@ -27,11 +36,17 @@ mat-card {
 .mat-column-launch_success {
   flex: 0 0 10% !important;
   width: 10% !important;
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    text-align: center;
+  }
 }
 
 .mat-column-flight_number {
   flex: 0 0 20% !important;
   width: 20% !important;
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    text-align: center;
+  }
 }
 .mat-column-mission_name {
   flex: 0 0 50% !important;
@@ -43,6 +58,6 @@ mat-card {
 }
 
 .mat-row:hover {
-  background-color: #c6c6c6;
+  background-color: #a0a0a0;
   cursor: pointer;
 }

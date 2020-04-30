@@ -1,12 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+
+import { Store } from "@ngrx/store";
+import * as fromStore from "../../store";
 
 import { Roadster } from "../../interfaces/roadster";
 import { JumboData } from "../../../shared/interfaces/jumboData";
-
-import { RoadsterService } from "../../services/roadster.service";
 
 @Component({
   selector: "app-roadster-container",
@@ -24,16 +23,12 @@ export class RoadsterContainerComponent implements OnInit {
     description:
       "A powerful statement from a pair of companies that are changing the status quo.",
   };
-  // The midnight cherry Tesla Roadster is piloted by Starman. It is the first standard roadworthy vehicle sent into space.
 
-  data$: Observable<Roadster>;
-  isLoading = true;
+  data$: Observable<Roadster[]>;
 
-  constructor(private roadsterService: RoadsterService) {}
+  constructor(private store: Store<fromStore.RoadsterFeatureState>) {}
 
   ngOnInit() {
-    this.data$ = this.roadsterService
-      .getRoadster()
-      .pipe(map((roadster) => roadster));
+    this.data$ = this.store.select(fromStore.getRoadster);
   }
 }

@@ -3,6 +3,8 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 
+import { History } from "../interfaces/history";
+
 @Injectable({
   providedIn: "root",
 })
@@ -11,9 +13,9 @@ export class HistoryService {
 
   constructor(private http: HttpClient) {}
 
-  getHistory(): any {
+  getHistory(): Observable<History[]> {
     // expect a get request to SpaceX
-    return this.http.get<History>(this.getHistoryUrl).pipe(
+    return this.http.get<History[]>(this.getHistoryUrl).pipe(
       // it should retry 3 times.
       retry(3),
       catchError(this.handleError)

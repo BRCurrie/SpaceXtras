@@ -11,6 +11,7 @@
     </mat-card>
   </div>
 
+  <!-- Search Bar -->
   <mat-form-field color="warn">
     <mat-label>
       <fa-icon class="search-icon" icon="search"></fa-icon>
@@ -24,8 +25,6 @@
   </mat-form-field>
 
   <div class="mat-elevation-z8 table-container">
-    <!-- Search Bar -->
-
     <table
       mat-table
       matSort
@@ -79,6 +78,7 @@
     </table>
 
     <mat-paginator
+      color="warn"
       #paginator
       [length]="dataSource.data.length"
       [pageIndex]="0"

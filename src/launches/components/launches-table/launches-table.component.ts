@@ -27,6 +27,9 @@ export class LaunchesTableComponent implements OnInit {
   @Input()
   isLoading: boolean;
 
+  @Input()
+  launches: Launch[];
+
   constructor(private matDialog: MatDialog) {}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -58,7 +61,14 @@ export class LaunchesTableComponent implements OnInit {
     }
   }
 
+  populateDataSource(launches) {
+    return (this.dataSource.data = launches);
+    // this.isLoading = false;
+  }
+
   ngOnInit() {
+    this.dataSource = new MatTableDataSource();
+    this.populateDataSource(this.launches);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate = (data, filter) => {

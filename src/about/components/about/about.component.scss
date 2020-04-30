@@ -1,0 +1,62 @@
+@import "~@angular/material/theming";
+@import "../../../styles-variables";
+
+.container {
+  height: auto;
+  width: auto;
+  padding: 1em;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 4em;
+  }
+}
+
+.card-container {
+  padding-bottom: 4em;
+}
+
+mat-card {
+  text-align: center;
+  padding: 2em 2em;
+  mat-card-content {
+    font-size: 1.1em;
+    line-height: 2em;
+  }
+}
+
+mat-expansion-panel {
+  margin-bottom: 2rem;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 1.3em;
+}
+
+.panel-content {
+  font-size: 1.25em !important;
+  line-height: 2em;
+}
+
+.logo-container {
+  width: inherit;
+  img {
+    height: 2em;
+    width: 2em;
+  }
+  .md-img {
+    height: 1.8em;
+    width: 1.8em;
+  }
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+a {
+  color: white;
+}
+
+fa-icon {
+  font-size: 2em;
+}

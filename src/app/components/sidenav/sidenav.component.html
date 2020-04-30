@@ -8,44 +8,100 @@
     [opened]="false"
   >
     <!-- Sidenav -->
-    <mat-toolbar class="sidenav-header">Menu</mat-toolbar>
+    <mat-toolbar class="sidenav-header"
+      >Navigation
+      <button
+        type="button"
+        aria-label="Close sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <fa-icon icon="times"></fa-icon>
+      </button>
+    </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/launches">Launches</a>
+      <a mat-list-item routerLink="/dashboard">Home</a>
+      <a mat-list-item routerLink="/launches">Missions</a>
       <a mat-list-item routerLink="/roadster">Roadster</a>
       <a mat-list-item routerLink="/timeline">Timeline</a>
+      <a mat-list-item routerLink="/about">About</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="main-content">
+  <mat-sidenav-content
+    class="main-content"
+    [ngStyle]="{
+      'flex-direction': (isHandset$ | async) == true ? 'column' : 'row'
+    }"
+  >
     <!-- Navbar  -->
-    <mat-toolbar>
-      <mat-toolbar-row class="main-toolbar">
+    <mat-toolbar style="background-color: inherit;" *ngIf="isHandset$ | async">
+      <mat-toolbar-row
+        class="main-toolbar"
+        style="background-color: rgba(0, 0, 0, 0);"
+      >
         <button
           type="button"
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async"
         >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
+
         <a mat-button routerLink="/dashboard">
           <h1 class="app-brand">SpaceX Data</h1>
         </a>
-        <span *ngIf="!(isHandset$ | async)">
-          <a mat-button routerLink="/launches">Launches</a>
-          <a mat-button routerLink="/roadster">Roadster</a>
-          <a mat-button routerLink="/timeline">Timeline</a>
-        </span>
       </mat-toolbar-row>
     </mat-toolbar>
-    <main class="main-content-inner" (scroll)="onScrollEvent($event)">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <mat-drawer-container
+      *ngIf="!(isHandset$ | async)"
+      class="example-container"
+      style="background-color: inherit;"
+    >
+      <mat-drawer-content>
+        <a mat-button routerLink="/dashboard">
+          <h1 class="app-brand">SpaceX Data</h1>
+        </a>
+        <span>
+          <a mat-button routerLink="/dashboard" routerLinkActive="active"
+            >Home</a
+          >
+          <a mat-button routerLink="/launches" routerLinkActive="active"
+            >Missions</a
+          >
+          <a mat-button routerLink="/roadster" routerLinkActive="active"
+            >Roadster</a
+          >
+          <a mat-button routerLink="/timeline" routerLinkActive="active"
+            >Timeline</a
+          >
+          <a mat-button routerLink="/about" routerLinkActive="active">About</a>
+        </span>
+      </mat-drawer-content>
+    </mat-drawer-container>
+
+    <main
+      class="main-content-inner"
+      [ngStyle]="{
+        width: (isHandset$ | async) == true ? '100%' : '65%'
+      }"
+    >
       <!-- Add Content Here -->
-      <section class="content-area">
-        <!-- <router-outlet></router-outlet> -->
+
+      <section class="content-area" *ngIf="!loading; else spinner">
         <div [@routeAnimations]="prepareRoute(outlet)">
-          <router-outlet #outlet="outlet"></router-outlet>
+          <router-outlet
+            #outlet="outlet"
+            (activate)="onActivate($event)"
+          ></router-outlet>
         </div>
       </section>
+      <ng-template #spinner>
+        <app-loading-spinner></app-loading-spinner>
+      </ng-template>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

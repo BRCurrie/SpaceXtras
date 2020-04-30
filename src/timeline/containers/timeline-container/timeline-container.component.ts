@@ -1,26 +1,39 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+
+import { Store } from "@ngrx/store";
+import * as fromStore from "../../store";
 
 import { History } from "../../interfaces/history";
-import { HistoryService } from "../../services/history.service";
+import { JumboData } from "../../../shared/interfaces/jumboData";
 
 @Component({
   selector: "app-timeline-container",
-  template: ` <app-timeline [history]="data$ | async"></app-timeline> `,
+  template: `
+    <app-jumbotron [background]="bgImg" [pageData]="pageData"></app-jumbotron>
+    <app-timeline [history]="data$ | async"></app-timeline>
+  `,
   styles: [],
 })
 export class TimelineContainerComponent implements OnInit {
-  data$: Observable<History>;
+  bgImg: string = "timelineImage";
+
+  pageData: JumboData = {
+    title: "Timeline",
+    description: "Filler Text",
+  };
+
+  data$: Observable<History[]>;
   isLoading = true;
 
-  constructor(private historyService: HistoryService) {}
+  // Revolutionizing Space Technology
+
+  constructor(private store: Store<fromStore.TimelineFeatureState>) {}
 
   ngOnInit() {
-    this.data$ = this.historyService
-      .getHistory()
-      .pipe(map((history) => history));
+    this.data$ = this.store.select(fromStore.getAllEvents);
+    // this.store.dispatch(new fromStore.LoadEvents());
   }
 }
 
