@@ -27,7 +27,7 @@ export class EventsEffects {
     // pipe needs to return an action
     // switchMap to return a new observable then map over and dispatch a new action
     switchMap(() => {
-      return this.historyService.getHistory().pipe(
+      return this.historyService.getRequest().pipe(
         // map over the results
         map((event) => new eventActions.LoadEventsSuccess(event)),
         catchError((error) => of(new eventActions.LoadEventsFail(error)))

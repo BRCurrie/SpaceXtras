@@ -1,16 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RoadsterComponent } from './roadster.component';
+import { RoadsterComponent } from "./roadster.component";
 
-describe('RoadsterComponent', () => {
+import { MaterialDesignModule } from "../../../material-design/material-design.module";
+import { TestingModule } from "../../../testing/utils";
+import { SharedModule } from "../../../shared/shared.module";
+
+describe("RoadsterComponent", () => {
   let component: RoadsterComponent;
   let fixture: ComponentFixture<RoadsterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoadsterComponent ]
-    })
-    .compileComponents();
+      imports: [MaterialDesignModule, TestingModule, SharedModule],
+      declarations: [RoadsterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +23,7 @@ describe('RoadsterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

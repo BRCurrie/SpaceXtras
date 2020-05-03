@@ -34,8 +34,6 @@ export class LaunchContainerComponent implements OnInit {
 
   data$: Observable<Launch[]>;
 
-  // TODO: need to add spinner if data is loading.
-
   constructor(private store: Store<fromStore.LaunchesFeatureState>) {}
 
   ngOnInit() {

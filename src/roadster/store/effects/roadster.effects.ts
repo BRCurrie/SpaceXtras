@@ -28,7 +28,7 @@ export class RoadsterEffects {
     // pipe needs to return an action
     // switchMap to return a new observable then map over and dispatch a new action
     switchMap(() => {
-      return this.roadsterService.getRoadster().pipe(
+      return this.roadsterService.getRequest().pipe(
         // map over the results
         map((roadster) => new roadsterActions.LoadRoadsterSuccess(roadster)),
         catchError((error) => of(new roadsterActions.LoadRoadsterFail(error)))

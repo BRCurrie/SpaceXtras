@@ -28,7 +28,7 @@ export class LaunchesEffects {
     // pipe needs to return an action
     // switchMap to return a new observable then map over and dispatch a new action
     switchMap(() => {
-      return this.launchService.getAllLaunches().pipe(
+      return this.launchService.getRequest().pipe(
         // map over the results
         map((launches) => new launchActions.LoadLaunchesSuccess(launches)),
         catchError((error) => of(new launchActions.LoadLaunchesFail(error)))

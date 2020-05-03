@@ -4,8 +4,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 
+import {
+  StoreRouterConnectingModule,
+  RouterStateSerializer,
+} from "@ngrx/router-store";
 import { StoreModule, MetaReducer } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
+import { reducers, effects, CustomerSerializer } from "./store";
 
 import { AppComponent } from "./app.component";
 
@@ -49,12 +54,13 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     TimelineModule,
     DashboardModule,
     AboutModule,
-    StoreModule.forRoot({}, { metaReducers }),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot(effects),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule.forRoot(),
   ],
   entryComponents: [LaunchesModalComponent],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomerSerializer }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

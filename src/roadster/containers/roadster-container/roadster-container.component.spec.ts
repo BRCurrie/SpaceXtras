@@ -1,16 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RoadsterContainerComponent } from './roadster-container.component';
+import { RoadsterContainerComponent } from "./roadster-container.component";
 
-describe('RoadsterContainerComponent', () => {
+import { MaterialDesignModule } from "../../../material-design/material-design.module";
+import { TestingModule } from "../../../testing/utils";
+import { SharedModule } from "../../../shared/shared.module";
+import * as fromComponents from "../../components";
+import { RoadsterService } from "src/roadster/services/roadster.service";
+
+describe("RoadsterContainerComponent", () => {
   let component: RoadsterContainerComponent;
   let fixture: ComponentFixture<RoadsterContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoadsterContainerComponent ]
-    })
-    .compileComponents();
+      imports: [MaterialDesignModule, TestingModule, SharedModule],
+      declarations: [RoadsterContainerComponent, ...fromComponents.components],
+      providers: [RoadsterService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +26,7 @@ describe('RoadsterContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

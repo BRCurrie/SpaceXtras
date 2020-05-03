@@ -14,7 +14,6 @@ import { JumboData } from "../../../shared/interfaces/jumboData";
 export class AboutContainerComponent implements OnInit {
   // class for the jumbotron
   bgImg: string = "aboutImage";
-  // bgImg: string = "aboutImage";
 
   // object for jumbotron
   pageData: JumboData = {
