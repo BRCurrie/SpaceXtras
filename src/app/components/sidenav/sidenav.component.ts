@@ -69,3 +69,10 @@ export class SidenavComponent {
     document.getElementsByTagName("main")[0].scrollTo(0, 0);
   }
 }
+
+// TODO:
+// having the router in an ngIf throws ExpressionChanged error for @routeAnimations
+// if I remove this the error should go away, but I will no longer have
+// a loading spinner.
+// Currently this needs triage
+// https://github.com/angular/angular/issues/36173
