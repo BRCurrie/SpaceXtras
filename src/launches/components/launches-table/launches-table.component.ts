@@ -6,12 +6,10 @@ import {
   ChangeDetectionStrategy,
 } from "@angular/core";
 
-import {
-  MatDialog,
-  MatPaginator,
-  MatSort,
-  MatTableDataSource,
-} from "@angular/material";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatSort } from "@angular/material/sort";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatDialog } from "@angular/material/dialog";
 import { MatDialogConfig } from "@angular/material/dialog";
 
 import { LaunchesModalComponent } from "../launches-modal/launches-modal.component";
