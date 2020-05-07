@@ -1,33 +1,34 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
+import {
+  provideMockStore,
+  // MockStore
+} from "@ngrx/store/testing";
 import { By } from "@angular/platform-browser";
-import { Store } from "@ngrx/store";
-import { HttpErrorResponse } from "@angular/common/http";
-import { EMPTY } from "rxjs";
-
-import { LaunchContainerComponent } from "./launch-container.component";
 
 import { MaterialDesignModule } from "../../../material-design/material-design.module";
-import {
-  TestingModule,
-  MockStore,
-  provideMockStore,
-} from "../../../testing/utils";
 import { SharedModule } from "../../../shared/shared.module";
+import { TestingModule } from "../../../testing/utils";
+
+import { LaunchContainerComponent } from "./launch-container.component";
 import * as fromComponents from "../../components";
 import { Launch } from "../../../shared/interfaces/launch";
-import { LaunchService } from "../../services/launch.service";
-import { LaunchesFeatureState } from "src/launches/store";
 
 describe("LaunchContainerComponent", () => {
   let launchSpy: jasmine.Spy;
 
   let component: LaunchContainerComponent;
   let fixture: ComponentFixture<LaunchContainerComponent>;
-  let store: MockStore<LaunchesFeatureState>;
+  let viewComponent;
+  let jumboComponent;
 
-  let testLaunches: Launch[] = [
+  let jumboData = {
+    title: "Test Title",
+    description: "Test Description",
+  };
+
+  let testData: Launch[] = [
     {
       flight_number: 41,
       mission_name: "CRS-11",
@@ -172,6 +173,17 @@ describe("LaunchContainerComponent", () => {
     },
   ];
 
+  const initialState = {
+    launchesFeature: {
+      launches: {
+        id: [0],
+        entities: testData,
+        loading: false,
+        loaded: true,
+      },
+    },
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -181,37 +193,37 @@ describe("LaunchContainerComponent", () => {
         SharedModule,
       ],
       declarations: [LaunchContainerComponent, ...fromComponents.components],
-      providers: [LaunchService],
+      providers: [provideMockStore({ initialState })],
     }).compileComponents();
-
-    // const launchService = TestBed.get(LaunchService);
-    //   launchSpy = spyOn(
-    //     LaunchService,
-    //     // 'retrieveStock'
-    //   ).and.returnValue(EMPTY);
-
-    // store = TestBed.get(Store);
-    // store.setState(createState({ launch: '', loading: true }));
-    // fixture = TestBed.createComponent(LaunchContainerComponent);
-    // component = fixture.componentInstance;
-    // fixture.detectChanges();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LaunchContainerComponent);
     component = fixture.componentInstance;
+    component.pageData = jumboData;
+    viewComponent = fixture.debugElement.query(By.css("app-launches-table"))
+      .componentInstance;
+    jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))
+      .componentInstance;
     fixture.detectChanges();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
   });
-});
 
-// function createState(launchState: LaunchesFeatureState) {
-//   return {
-//     examples: {
-//       launch: launchState
-//     }
-//   } as State;
-// }
+  it("should populate data$", (done: DoneFn) => {
+    component.data$.subscribe((data) => {
+      expect(data).toContain(testData[0], "expected data");
+      done();
+    });
+  });
+
+  it("should set @Input launches to be populated from data$", () => {
+    expect(viewComponent.launches).toEqual(testData);
+  });
+
+  it("should set title and description in Jumbotron", () => {
+    expect(jumboComponent.pageData).toEqual(jumboData);
+  });
+});

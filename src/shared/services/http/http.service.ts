@@ -13,12 +13,13 @@ export class HttpService<T> {
     return this.http.get<T[]>(this.url).pipe(
       // it should retry 3 times.
       retry(3),
+      // map could then be called to adapt the data
       // it should handle error as needed.
       catchError(this.handleError)
     );
   }
 
-  private handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error("An error occurred:", error.error.message);

@@ -2,7 +2,7 @@
   <div class="header">
     <mat-card>
       <mat-card-title>{{ roadster.name }}</mat-card-title>
-      <mat-card-content>
+      <mat-card-content class="launched">
         The midnight cherry Tesla Roadster was launched on
         {{ roadster.launch_date_utc | date: "shortDate" }}
         and has been in space for
@@ -15,7 +15,7 @@
 
   <div class="content">
     <mat-card>
-      <mat-card-content>
+      <mat-card-content class="details">
         <p>{{ roadster.details }}</p>
       </mat-card-content>
     </mat-card>
@@ -25,7 +25,7 @@
 
   <div class="content">
     <mat-card>
-      <mat-card-content>
+      <mat-card-content class="travel">
         <p>
           The roadster is currently travelling at
           {{ roadster.speed_mph | number: "1.0-0" }} mph.

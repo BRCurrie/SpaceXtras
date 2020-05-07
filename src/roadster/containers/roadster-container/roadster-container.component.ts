@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Store } from "@ngrx/store";
@@ -9,6 +9,7 @@ import { JumboData } from "../../../shared/interfaces/jumboData";
 
 @Component({
   selector: "app-roadster-container",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-jumbotron [background]="bgImg" [pageData]="pageData"></app-jumbotron>
     <app-roadster [roadster]="data$ | async"></app-roadster>

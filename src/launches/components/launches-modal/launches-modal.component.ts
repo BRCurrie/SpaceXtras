@@ -1,9 +1,15 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Inject,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-launches-modal",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./launches-modal.component.html",
   styleUrls: ["./launches-modal.component.scss"],
 })

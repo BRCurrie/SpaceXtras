@@ -184,6 +184,12 @@ describe("LaunchesTableComponent", () => {
     fixture.detectChanges();
   });
 
+  // TODO:
+  // ngSwitch launch_success
+  // can open modal
+  // passed data into modal
+  // search by mission_name
+
   it("should compile", () => {
     expect(component).toBeTruthy();
   });

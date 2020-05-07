@@ -1,10 +1,16 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { Launch } from "src/shared/interfaces/launch";
 
 // import { ParallaxDirective } from "./directives/parallax.directive";
 
 @Component({
   selector: "app-dashboard",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
 })

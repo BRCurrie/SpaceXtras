@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+
+import { By } from "@angular/platform-browser";
 
 import { AboutContainerComponent } from "./about-container.component";
 
@@ -10,6 +13,13 @@ import * as fromComponents from "../../components";
 describe("AboutComponent", () => {
   let component: AboutContainerComponent;
   let fixture: ComponentFixture<AboutContainerComponent>;
+  // let viewComponent;
+  let jumboComponent;
+
+  let jumboData = {
+    title: "Test Title",
+    description: "Test Description",
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,10 +31,19 @@ describe("AboutComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AboutContainerComponent);
     component = fixture.componentInstance;
+    component.pageData = jumboData;
+    // viewComponent = fixture.debugElement.query(By.css("app-dashboard"))
+    //   .componentInstance;
+    jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))
+      .componentInstance;
     fixture.detectChanges();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should set title and description in Jumbotron", () => {
+    expect(jumboComponent.pageData).toEqual(jumboData);
   });
 });

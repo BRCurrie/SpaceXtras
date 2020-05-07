@@ -1,32 +1,111 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { By } from "@angular/platform-browser";
 
-import { RoadsterContainerComponent } from "./roadster-container.component";
+import {
+  provideMockStore,
+  // MockStore
+} from "@ngrx/store/testing";
 
 import { MaterialDesignModule } from "../../../material-design/material-design.module";
 import { TestingModule } from "../../../testing/utils";
 import { SharedModule } from "../../../shared/shared.module";
+
+import { RoadsterContainerComponent } from "./roadster-container.component";
 import * as fromComponents from "../../components";
-import { RoadsterService } from "src/roadster/services/roadster.service";
+import { Roadster } from "../../interfaces/roadster";
 
 describe("RoadsterContainerComponent", () => {
   let component: RoadsterContainerComponent;
   let fixture: ComponentFixture<RoadsterContainerComponent>;
+  let viewComponent;
+  let jumboComponent;
+
+  let jumboData = {
+    title: "Test Title",
+    description: "Test Description",
+  };
+
+  let testData: Roadster[] = [
+    {
+      name: "Elon Musk's Tesla Roadster",
+      launch_date_utc: "2018-02-06T20:45:00.000Z",
+      launch_date_unix: 1517949900,
+      launch_mass_kg: 1350,
+      launch_mass_lbs: 2976,
+      norad_id: 43205,
+      epoch_jd: 2458366.482893519,
+      orbit_type: "heliocentric",
+      apoapsis_au: 1.663752666195018,
+      periapsis_au: 0.9860753850280967,
+      semi_major_axis_au: 137.6352649527045,
+      eccentricity: 0.2557438701934329,
+      inclination: 1.077489463372395,
+      longitude: 317.0956890012447,
+      periapsis_arg: 177.4902539777412,
+      period_days: 557.0317797709337,
+      speed_kph: 75139.344,
+      speed_mph: 46689.409320624,
+      earth_distance_km: 194902757.14697537,
+      earth_distance_mi: 121106921.11117323,
+      mars_distance_km: 159204213.85950035,
+      mars_distance_mi: 98924881.57009159,
+      wikipedia: "https://en.wikipedia.org/wiki/Elon_Musk%27s_Tesla_Roadster",
+      details:
+        "Elon Musk's Tesla Roadster is an electric sports car that served as the dummy payload for the February 2018 Falcon Heavy test flight and is now an artificial satellite of the Sun. Starman, a mannequin dressed in a spacesuit, occupies the driver's seat. The car and rocket are products of Tesla and SpaceX, both companies founded by Elon Musk. This 2008-model Roadster was previously used by Musk for commuting, and is the only consumer car sent into space.",
+    },
+  ];
+
+  const initialState = {
+    roadsterFeature: {
+      roadster: {
+        data: testData,
+        loaded: true,
+        loading: false,
+      },
+    },
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialDesignModule, TestingModule, SharedModule],
+      imports: [
+        MaterialDesignModule,
+        TestingModule,
+        SharedModule,
+        NoopAnimationsModule,
+      ],
       declarations: [RoadsterContainerComponent, ...fromComponents.components],
-      providers: [RoadsterService],
+      providers: [provideMockStore({ initialState })],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RoadsterContainerComponent);
     component = fixture.componentInstance;
+    component.pageData = jumboData;
+    viewComponent = fixture.debugElement.query(By.css("app-roadster"))
+      .componentInstance;
+    jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))
+      .componentInstance;
     fixture.detectChanges();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should populate data$", (done: DoneFn) => {
+    component.data$.subscribe((data) => {
+      expect(data).toEqual(testData, "expected data");
+      done();
+    });
+  });
+
+  it("should set @Input roadster to be populated from data$", () => {
+    expect(viewComponent.roadster).toEqual(testData);
+  });
+
+  it("should set title and description in Jumbotron", () => {
+    expect(jumboComponent.pageData).toEqual(jumboData);
   });
 });

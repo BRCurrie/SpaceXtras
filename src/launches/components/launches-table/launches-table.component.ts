@@ -1,4 +1,10 @@
-import { OnInit, Component, Input, ViewChild } from "@angular/core";
+import {
+  OnInit,
+  Component,
+  Input,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 
 import {
   MatDialog,
@@ -14,6 +20,7 @@ import { Launch } from "../../../shared/interfaces/launch";
 
 @Component({
   selector: "app-launches-table",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./launches-table.component.html",
   styleUrls: ["./launches-table.component.scss"],
 })

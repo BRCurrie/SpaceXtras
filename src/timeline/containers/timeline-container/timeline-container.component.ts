@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { Observable } from "rxjs";
 
@@ -10,6 +10,7 @@ import { JumboData } from "../../../shared/interfaces/jumboData";
 
 @Component({
   selector: "app-timeline-container",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-jumbotron [background]="bgImg" [pageData]="pageData"></app-jumbotron>
     <app-timeline [history]="data$ | async"></app-timeline>
@@ -21,23 +22,15 @@ export class TimelineContainerComponent implements OnInit {
 
   pageData: JumboData = {
     title: "Timeline",
-    description: "Filler Text",
+    description: "Revolutionizing space technology",
   };
 
   data$: Observable<History[]>;
   isLoading = true;
 
-  // Revolutionizing Space Technology
-
   constructor(private store: Store<fromStore.TimelineFeatureState>) {}
 
   ngOnInit() {
     this.data$ = this.store.select(fromStore.getAllEvents);
-    // this.store.dispatch(new fromStore.LoadEvents());
   }
 }
-
-//     <app-loading-spinner *ngIf="isLoading; else timeline">
-// </app-loading-spinner>
-// <ng-template #timeline>
-// </ng-template>

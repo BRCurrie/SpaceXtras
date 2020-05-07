@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { JumboData } from "../../../shared/interfaces/jumboData";
 
 @Component({
   selector: "app-about-container",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-jumbotron [background]="bgImg" [pageData]="pageData"> </app-jumbotron>
     <app-about></app-about>

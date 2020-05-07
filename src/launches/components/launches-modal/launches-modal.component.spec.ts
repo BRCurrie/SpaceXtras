@@ -5,11 +5,23 @@ import { LaunchesModalComponent } from "./launches-modal.component";
 import { MaterialDesignModule } from "../../../material-design/material-design.module";
 import { TestingModule } from "../../../testing/utils";
 import { SharedModule } from "../../../shared/shared.module";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogConfig,
+} from "@angular/material/dialog";
 
 describe("LaunchesModalComponent", () => {
   let component: LaunchesModalComponent;
   let fixture: ComponentFixture<LaunchesModalComponent>;
+  let dialog;
+  // in the constructor
+  // @Inject(MAT_DIALOG_DATA) public data: any,
+  // public dialogRef: MatDialogRef<LaunchesModalComponent>,
+  // private breakpointObserver: BreakpointObserver
+  // min-width of 768 px update size to 65%
+  // close() button     this.dialogRef.close();
+
   let testData = [
     {
       launches: {
@@ -56,7 +68,7 @@ describe("LaunchesModalComponent", () => {
       imports: [MaterialDesignModule, TestingModule, SharedModule],
       declarations: [LaunchesModalComponent],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: testData },
         { provide: MatDialogRef, useValue: {} },
       ],
     }).compileComponents();
@@ -64,6 +76,10 @@ describe("LaunchesModalComponent", () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LaunchesModalComponent);
+    // dialog = TestBed.get(MAT_DIALOG_DATA);
+
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.data = { launches: testData };
     component = fixture.componentInstance;
     component.data = testData;
     fixture.detectChanges();
@@ -72,4 +88,39 @@ describe("LaunchesModalComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO:
+  // data should be binded from provided values
+  // *ngIf core.landing, payload.mass, payload.mass_returned, payload.cargo_manifest
+
+  // .mat-dialog-title{{ data.launches.mission_name }}
+  // <mat-dialog-content>
+  // rocket.rocket_name | titlecase }}
+  // flight_number
+  // launch_date_local | date: "longDate"
+  // launch_site.site_name_long
+
+  // <mat-tab-group>
+  // <mat-tab label="Cores"
+  // core_serial
+  // flight
+  // reused
+  // landing_intent
+  // landing_success
+  // landing_type
+  // landing_vehicle
+  // #noLanding
+
+  // <mat-tab label="Payload"
+  // payload_id
+  // payload_type
+  // orbit_type | orbitType
+  // payload_mass_kg
+  // payload_mass_returned_kg
+  // nationality
+  // manufacturer
+  // payload.customers.toString() | replace
+  // cargo_manifest button
+
+  // close() button
 });

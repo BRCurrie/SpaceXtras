@@ -1,9 +1,15 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 
 import { JumboData } from "../../interfaces/jumboData";
 
 @Component({
   selector: "app-jumbotron",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./jumbotron.component.html",
   styleUrls: ["./jumbotron.component.scss"],
 })

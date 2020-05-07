@@ -1,17 +1,14 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 
 import { Roadster } from "../../interfaces/roadster";
 
 @Component({
   selector: "app-roadster",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./roadster.component.html",
   styleUrls: ["./roadster.component.scss"],
 })
-export class RoadsterComponent implements OnInit {
+export class RoadsterComponent {
   @Input()
   roadster: Roadster;
-
-  constructor() {}
-
-  ngOnInit() {}
 }

@@ -4,14 +4,10 @@ import { By } from "@angular/platform-browser";
 
 import { JumbotronComponent } from "./jumbotron.component";
 
-// import { MaterialDesignModule } from "../../../material-design/material-design.module";
-// import { TestingModule } from "../../../testing/utils";
-
 describe("JumbotronComponent", () => {
   let component: JumbotronComponent;
   let fixture: ComponentFixture<JumbotronComponent>;
 
-  // test data
   let bgTest = "testBG";
   let pageDataTest = {
     title: "Test title",
@@ -28,7 +24,6 @@ describe("JumbotronComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(JumbotronComponent);
     component = fixture.componentInstance;
-    // populate the inputs with our test data
     component.background = bgTest;
     component.pageData = pageDataTest;
     fixture.detectChanges();

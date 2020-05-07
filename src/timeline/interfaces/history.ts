@@ -5,7 +5,7 @@ export interface History {
   title: string | null;
   event_date_utc: string | null;
   event_date_unix: number;
-  flight_number: number;
+  flight_number: number | null;
   details: string | null;
   links: {
     reddit: string | null;

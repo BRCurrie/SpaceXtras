@@ -20,7 +20,9 @@
         <h3>{{ history.title }}</h3>
         <div>
           <div *ngIf="history.flight_number; else noFlight">
-            <div>Flight No: {{ history.flight_number }}</div>
+            <div class="flight_number">
+              Flight No: {{ history.flight_number }}
+            </div>
             <br />
             {{ history.details }}
           </div>
@@ -31,13 +33,12 @@
         <mat-divider></mat-divider>
         <div class="icon-container">
           <a
-            class="external-link"
             href="{{ history.links.reddit }}"
             target="_blank"
             *ngIf="history.links.reddit"
           >
             <button mat-button matTooltip="Reddit">
-              <fa-icon [icon]="['fab', 'reddit']"> </fa-icon>
+              <fa-icon class="reddit" [icon]="['fab', 'reddit']"> </fa-icon>
             </button>
           </a>
           <a
@@ -46,7 +47,7 @@
             *ngIf="history.links.article"
           >
             <button mat-button matTooltip="News Article">
-              <fa-icon icon="newspaper"> </fa-icon>
+              <fa-icon class="newspaper" icon="newspaper"> </fa-icon>
             </button>
           </a>
           <a
@@ -55,7 +56,8 @@
             *ngIf="history.links.wikipedia"
           >
             <button mat-button matTooltip="Wikipedia">
-              <fa-icon [icon]="['fab', 'wikipedia-w']"> </fa-icon>
+              <fa-icon class="wikipedia" [icon]="['fab', 'wikipedia-w']">
+              </fa-icon>
             </button>
           </a>
         </div>

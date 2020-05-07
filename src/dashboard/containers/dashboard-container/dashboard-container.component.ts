@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { Observable } from "rxjs";
 // import { map } from "rxjs/operators";
@@ -10,6 +10,7 @@ import { JumboData } from "../../../shared/interfaces/jumboData";
 
 @Component({
   selector: "app-dashboard-container",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-jumbotron [background]="bgImg" [pageData]="pageData"></app-jumbotron>
     <app-dashboard [nextLaunch]="data$ | async"></app-dashboard>
