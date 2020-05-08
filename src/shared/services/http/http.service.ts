@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
@@ -6,7 +6,7 @@ import { catchError, retry } from "rxjs/operators";
   providedIn: "root",
 })
 export class HttpService<T> {
-  constructor(private http: HttpClient, private url: string) {}
+  constructor(private http: HttpClient, @Inject(String) private url: string) {}
 
   public getRequest(): Observable<T[]> {
     // expect a get request to be made

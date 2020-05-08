@@ -1,19 +1,36 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { TestBed } from "@angular/core/testing";
 
-import { LaunchesTableComponent } from "./launches-table.component";
+import { Actions } from "@ngrx/effects";
 
-import { MaterialDesignModule } from "../../../material-design/material-design.module";
-import { TestingModule } from "../../../testing/utils";
-import { SharedModule } from "../../../shared/shared.module";
+import { hot, cold } from "jasmine-marbles";
+import { Observable, empty, of } from "rxjs";
 
-import { Launch } from "../../../shared/interfaces/launch";
+import { LaunchService } from "../../services/launch.service";
+import * as fromEffects from "./launches.effects";
+import * as fromActions from "../actions/launches.action";
+import { Launch } from "src/shared/interfaces/launch";
 
-describe("LaunchesTableComponent", () => {
-  let component: LaunchesTableComponent;
-  let fixture: ComponentFixture<LaunchesTableComponent>;
+export class TestActions extends Actions {
+  constructor() {
+    super(empty());
+  }
 
-  let testLaunches: Launch[] = [
+  set stream(source: Observable<any>) {
+    this.source = source;
+  }
+}
+
+export function getActions() {
+  return new TestActions();
+}
+
+describe("LaunchesEffects", () => {
+  let actions$: TestActions;
+  let service: LaunchService;
+  let effects: fromEffects.LaunchesEffects;
+
+  const testData: Launch[] = [
     {
       flight_number: 41,
       mission_name: "CRS-11",
@@ -158,76 +175,32 @@ describe("LaunchesTableComponent", () => {
     },
   ];
 
-  // displayedColumns = [
-  //   "mission_name",
-  //   "flight_number",
-  //   "launch_date_local",
-  //   "launch_success",
-  // ];
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LaunchesTableComponent],
-      imports: [
-        NoopAnimationsModule,
-        MaterialDesignModule,
-        TestingModule,
-        SharedModule,
-      ],
-    }).compileComponents();
-  }));
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(LaunchesTableComponent);
-    component = fixture.componentInstance;
-    component.launches = testLaunches;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        LaunchService,
+        fromEffects.LaunchesEffects,
+        { provide: Actions, useFactory: getActions },
+      ],
+    });
+
+    actions$ = TestBed.get(Actions);
+    service = TestBed.get(LaunchService);
+    effects = TestBed.get(fromEffects.LaunchesEffects);
+
+    spyOn(service, "getRequest").and.returnValue(of(testData));
   });
 
-  // TODO:
-  // ngSwitch launch_success
-  // can open modal
-  // passed data into modal
-  // search by mission_name
-  // sorting,
-  // pagination,
-  // launch fail icon
-  // success tbd as "- - -"
-  // filter
+  describe("loadEvents$", () => {
+    it("should return a collection from LoadEventsSuccess", () => {
+      const action = new fromActions.LoadLaunches();
+      const completion = new fromActions.LoadLaunchesSuccess(testData);
 
-  it("should compile", () => {
-    expect(component).toBeTruthy();
-  });
+      actions$.stream = hot("-a", { a: action });
+      const expected = cold("-b", { b: completion });
 
-  it("should test the table ", (done) => {
-    expect(component.launches).toEqual(testLaunches);
-
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-
-      let tableRows = fixture.nativeElement.querySelectorAll("tr");
-      // Table Header and Data Row
-      expect(tableRows.length).toBe(2);
-
-      // Header row
-      let headerRow = tableRows[0];
-      expect(headerRow.cells[0].innerHTML).toContain("Mission Name");
-      expect(headerRow.cells[1].innerHTML).toContain("Flight No.");
-      expect(headerRow.cells[2].innerHTML).toContain("Date");
-      expect(headerRow.cells[3].innerHTML).toContain("Success");
-
-      // Data rows
-      let row1 = tableRows[1];
-      expect(row1.cells[0].innerHTML).toBe("CRS-11");
-      console.log(row1);
-      expect(row1.cells[1].innerHTML).toBe("41");
-      // date is piped with shortDate
-      expect(row1.cells[2].innerHTML).toBe(" 6/3/17 ");
-      // expect a check icon
-      expect(row1.cells[3].innerHTML).toContain("fa-check");
-
-      done();
+      expect(effects.loadLaunches$).toBeObservable(expected);
     });
   });
 });
