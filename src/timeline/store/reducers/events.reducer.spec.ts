@@ -96,7 +96,7 @@ describe("EventsReducer", () => {
 
 // test some of the lower level selectors
 describe("EventsReducer Selectors", () => {
-  describe("getPizzaEntities", () => {
+  describe("getEventsEntities", () => {
     it("should return .entities", () => {
       const entities: { [key: number]: History } = {
         1: {

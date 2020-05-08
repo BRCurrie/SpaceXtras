@@ -26,7 +26,7 @@ export interface Launch {
         block: number | null;
         gridfins: boolean;
         legs: boolean;
-        reused: false;
+        reused: boolean | null;
         land_success: boolean | null;
         landing_intent: boolean | null;
         landing_type: string | null;

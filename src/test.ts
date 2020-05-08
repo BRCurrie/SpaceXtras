@@ -15,11 +15,11 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
-// const context = require.context("./", true, /\.spec\.ts$/);
+const context = require.context("./", true, /\.spec\.ts$/);
 // Test specific set of files e.g. services.
 // const context = require.context("./", true, /service\.spec\.ts$/);
 // test one file
-const context = require.context("./", true, /timeline\.guard\.spec\.ts$/);
+// const context = require.context("./", true, /roadster\.reducer\.spec\.ts$/);
 
 // And load the modules.
 context.keys().map(context);
