@@ -5,26 +5,13 @@ import { cold } from "jasmine-marbles";
 import { TimelineGuard } from "./timeline.guard";
 
 import { History } from "../interfaces/history";
+import { mockEvent } from "src/testing/mock-events";
 
 describe("TimelineGuard", () => {
   let guard: TimelineGuard;
   let store: MockStore;
 
-  let testData: History[] = [
-    {
-      id: 1,
-      title: "TITLE",
-      event_date_utc: "2018-02-06T20:45:00.000Z",
-      event_date_unix: 2,
-      flight_number: 3,
-      details: "DETAILS",
-      links: {
-        reddit: "REDDIT",
-        article: "ARTICLE",
-        wikipedia: "WIKIPEDIA",
-      },
-    },
-  ];
+  let testData: History[] = [mockEvent];
 
   const initialState = {
     timelineFeature: {
@@ -46,9 +33,6 @@ describe("TimelineGuard", () => {
     store = TestBed.get(MockStore);
     guard = TestBed.get(TimelineGuard);
   });
-
-  // TODO:
-  // checkStore()
 
   it("should return true if the state is loaded", () => {
     const expected = cold("(a|)", { a: true });

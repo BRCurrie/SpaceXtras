@@ -3,7 +3,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { DashboardContainerComponent } from "../dashboard/containers/dashboard-container/dashboard-container.component";
 
 const routes: Routes = [
-  // Dashboard will not be lazy loaded, it is intended to be the landing page.
   {
     path: "",
     redirectTo: "/dashboard",
@@ -15,9 +14,8 @@ const routes: Routes = [
     component: DashboardContainerComponent,
     data: { animation: "Dashboard" },
   },
-  // Lazy Loaded Modules
   {
-    path: "launches",
+    path: "missions",
     loadChildren: () =>
       import("../launches/launches.module").then((m) => m.LaunchesModule),
   },

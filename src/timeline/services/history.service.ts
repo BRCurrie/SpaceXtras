@@ -9,8 +9,6 @@ import { History } from "../interfaces/history";
   providedIn: "root",
 })
 export class HistoryService extends HttpService<History> {
-  // historyApi = "https://api.spacexdata.com/v3/history";
-
   constructor(http: HttpClient) {
     super(http, "https://api.spacexdata.com/v3/history");
   }

@@ -26,7 +26,6 @@ import { LaunchService } from "./services/launch.service";
     EffectsModule.forFeature(effects),
   ],
   providers: [LaunchService, ...fromGuards.guards],
-  // added launches-dialog component to entryComponents in app.module
   declarations: [...fromComponents.components, ...fromContainers.components],
   exports: [...fromComponents.components, ...fromContainers.components],
 })

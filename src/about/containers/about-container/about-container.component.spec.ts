@@ -13,7 +13,6 @@ import * as fromComponents from "../../components";
 describe("AboutComponent", () => {
   let component: AboutContainerComponent;
   let fixture: ComponentFixture<AboutContainerComponent>;
-  // let viewComponent;
   let jumboComponent;
 
   let jumboData = {
@@ -32,8 +31,7 @@ describe("AboutComponent", () => {
     fixture = TestBed.createComponent(AboutContainerComponent);
     component = fixture.componentInstance;
     component.pageData = jumboData;
-    // viewComponent = fixture.debugElement.query(By.css("app-dashboard"))
-    //   .componentInstance;
+
     jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))
       .componentInstance;
     fixture.detectChanges();

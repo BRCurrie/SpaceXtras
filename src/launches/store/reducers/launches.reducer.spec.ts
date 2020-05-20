@@ -27,7 +27,6 @@ describe("EventsReducer", () => {
 
   describe("LOAD_EVENTS_SUCCESS action", () => {
     it("should map an array to entities", () => {
-      // expected input.
       const events: Launch[] = [
         {
           flight_number: 1,
@@ -174,12 +173,8 @@ describe("EventsReducer", () => {
           crew: null,
         },
       ];
-      // expected output
       const entities = {
-        // id of 1 and array index 0
         1: events[0],
-        // id of 2 and array index 1
-        // 2: events[1],
       };
       const { initialState } = fromEvents;
       const action = new fromActions.LoadLaunchesSuccess(events);
@@ -212,7 +207,6 @@ describe("EventsReducer", () => {
   });
 });
 
-// test some of the lower level selectors
 describe("EventsReducer Selectors", () => {
   describe("getEventsEntities", () => {
     it("should return .entities", () => {

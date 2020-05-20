@@ -26,7 +26,6 @@ export class RoadsterGuard implements CanActivate {
           this.store.dispatch(new fromStore.LoadRoadster());
         }
       }),
-      // after it is loaded
       filter((loaded) => loaded),
       take(1)
     );

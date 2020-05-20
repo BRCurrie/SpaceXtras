@@ -6,6 +6,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="false"
+    style="border: none;"
   >
     <!-- Sidenav -->
     <mat-toolbar class="sidenav-header"
@@ -21,7 +22,9 @@
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/dashboard">Home</a>
-      <a mat-list-item routerLink="/launches">Missions</a>
+      <a mat-list-item routerLink="/missions" routerLinkActive="active"
+        >Missions</a
+      >
       <a mat-list-item routerLink="/roadster">Roadster</a>
       <a mat-list-item routerLink="/timeline">Timeline</a>
       <a mat-list-item routerLink="/about">About</a>
@@ -66,10 +69,14 @@
           <h1 class="app-brand">SpaceX Data</h1>
         </a>
         <span>
-          <a mat-button routerLink="/dashboard" routerLinkActive="active"
+          <a
+            mat-button
+            id="home"
+            routerLink="/dashboard"
+            routerLinkActive="active"
             >Home</a
           >
-          <a mat-button routerLink="/launches" routerLinkActive="active"
+          <a mat-button routerLink="/missions" routerLinkActive="active"
             >Missions</a
           >
           <a mat-button routerLink="/roadster" routerLinkActive="active"
@@ -84,13 +91,11 @@
     </mat-drawer-container>
 
     <main
-      class="main-content-inner"
       [ngStyle]="{
         width: (isHandset$ | async) == true ? '100%' : '65%'
       }"
+      class="main-content-inner"
     >
-      <!-- Add Content Here -->
-
       <section class="content-area" *ngIf="!loading; else spinner">
         <div [@routeAnimations]="prepareRoute(outlet)">
           <router-outlet

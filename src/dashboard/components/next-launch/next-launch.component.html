@@ -1,0 +1,22 @@
+<div class="container" *ngIf="nextLaunch">
+  <h5>Next Launch</h5>
+  <p>Flight #{{ nextLaunch.flight_number }}</p>
+  <p>
+    {{ nextLaunch.mission_name }}
+  </p>
+  <p>{{ nextLaunch.launch_date_utc | date: "short" }}</p>
+  <ng-container
+    *ngIf="lessThan24Hours(nextLaunch.launch_date_unix - today, 86400)"
+  >
+    <countdown
+      [config]="{ leftTime: nextLaunch.launch_date_unix - today }"
+    ></countdown>
+  </ng-container>
+  <a
+    mat-raised-button
+    color="primary"
+    routerLink="/missions"
+    routerLinkActive="active"
+    >See All Missions</a
+  >
+</div>

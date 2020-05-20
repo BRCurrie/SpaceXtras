@@ -50,7 +50,6 @@ import {
   faWikipediaW,
 } from "@fortawesome/free-brands-svg-icons";
 
-// module array for imports/exports
 const modules: any[] = [
   MatButtonModule,
   MatCheckboxModule,
@@ -83,15 +82,12 @@ const modules: any[] = [
   ScrollingModule,
 ];
 
-// Declare Module that imports/exports the @angular/material modules needed in the app
 @NgModule({
   imports: [...modules],
   exports: [...modules],
 })
 export class MaterialDesignModule {
   constructor(library: FaIconLibrary) {
-    // If icon pack is added instead of individual imports
-    //  library.addIconPacks(fas);
     library.addIcons(
       faBars,
       faGithub,

@@ -1,32 +1,19 @@
 import { TestBed } from "@angular/core/testing";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { defer } from "rxjs";
+
+import { asyncData, asyncError } from "../../../testing/functions";
 
 import { HttpService } from "./http.service";
 
 import { History } from "../../../timeline/interfaces/history";
+import { mockEvent } from "src/testing/mock-events";
 
 describe("HttpService", () => {
   let httpClientSpy: { get: jasmine.Spy };
   let service: HttpService<History>;
-  // to test the url against a value.
   let testString: string = "Test String";
 
-  let testData: History[] = [
-    {
-      id: 1,
-      title: "string",
-      event_date_utc: "string",
-      event_date_unix: 2,
-      flight_number: 3,
-      details: "string",
-      links: {
-        reddit: "string",
-        article: "string",
-        wikipedia: "string",
-      },
-    },
-  ];
+  let testData: History[] = [mockEvent];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -70,10 +57,6 @@ describe("HttpService", () => {
     expect(service.handleError).toHaveBeenCalled();
   });
 
-  // TODO:
-  // retry()
-  // handleError()
-
   // it("should retry three times", (done: DoneFn) => {
   //   let emsg = "intentional 404";
   //   httpClientSpy.get.and.returnValues(
@@ -100,11 +83,3 @@ describe("HttpService", () => {
   //   );
   // });
 });
-
-export function asyncData<T>(data: T) {
-  return defer(() => Promise.resolve(data));
-}
-
-export function asyncError<T>(errorObject: any) {
-  return defer(() => Promise.reject(errorObject));
-}

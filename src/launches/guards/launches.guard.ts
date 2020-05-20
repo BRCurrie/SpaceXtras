@@ -26,7 +26,6 @@ export class LaunchesGuard implements CanActivate {
           this.store.dispatch(new fromStore.LoadLaunches());
         }
       }),
-      // after it is loaded
       filter((loaded) => loaded),
       take(1)
     );

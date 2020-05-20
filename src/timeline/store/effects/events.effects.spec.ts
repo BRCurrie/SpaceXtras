@@ -4,46 +4,21 @@ import { TestBed } from "@angular/core/testing";
 import { Actions } from "@ngrx/effects";
 
 import { hot, cold } from "jasmine-marbles";
-import { Observable, empty, of } from "rxjs";
+import { of } from "rxjs";
 
 import { HistoryService } from "../../services/history.service";
 import * as fromEffects from "./events.effects";
 import * as fromActions from "../actions/events.action";
 
-export class TestActions extends Actions {
-  constructor() {
-    super(empty());
-  }
-
-  set stream(source: Observable<any>) {
-    this.source = source;
-  }
-}
-
-export function getActions() {
-  return new TestActions();
-}
+import { getActions, TestActions } from "../../../testing/functions";
+import { mockEvent } from "src/testing/mock-events";
 
 describe("EventsEffects", () => {
   let actions$: TestActions;
   let service: HistoryService;
   let effects: fromEffects.EventsEffects;
 
-  const testData = [
-    {
-      id: 1,
-      title: "TITLE",
-      event_date_utc: "2018-02-06T20:45:00.000Z",
-      event_date_unix: 2,
-      flight_number: 3,
-      details: "DETAILS",
-      links: {
-        reddit: "REDDIT",
-        article: "ARTICLE",
-        wikipedia: "WIKIPEDIA",
-      },
-    },
-  ];
+  const testData = [mockEvent];
 
   beforeEach(() => {
     TestBed.configureTestingModule({

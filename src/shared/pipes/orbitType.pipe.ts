@@ -34,4 +34,3 @@ export class OrbitTypePipe implements PipeTransform {
     return newValue;
   }
 }
-//  Orbit types: VLEO, LEO, ISS, PO, GTO, ES-L1, HCO, SSO, MEO, SO, TLI

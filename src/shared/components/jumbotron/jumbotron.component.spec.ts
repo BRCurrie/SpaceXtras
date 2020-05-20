@@ -35,9 +35,7 @@ describe("JumbotronComponent", () => {
     expect(component.pageData).toEqual(pageDataTest);
   });
 
-  // TODO:
-  // fix this test, has no expectations
-
+  // has no expectations
   // it("should populate add the bgImg as class to the jumbotron", () => {
   //   let classes: any = fixture.debugElement.query(By.css("#jumbotron")).classes;
   //   expect(classes.bgTest).toBeTruthy;

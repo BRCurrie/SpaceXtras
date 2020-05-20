@@ -5769,6 +5769,11 @@ ngrx-store-freeze@^0.2.4:
   dependencies:
     deep-freeze-strict "^1.1.1"
 
+ngx-countdown@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-countdown/-/ngx-countdown-9.0.1.tgz#ea96dbcdb82af5874f08490a8769ddf919e34c8d"
+  integrity sha512-g8xUMuUZanv0FID2D82xYKv2SqQyggczcZOP3CqEbjGb5Y6NHBWjdJPN2rX5WJxwH8FScPgSKdkH8glmRQCGLw==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

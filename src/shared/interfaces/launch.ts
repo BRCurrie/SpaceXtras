@@ -1,9 +1,3 @@
-// Used by multiple modules
-// Launches - all launches
-// https://api.spacexdata.com/v3/launches
-// Dashboard - next launch
-// https://api.spacexdata.com/v3/launches/next
-
 export interface Launch {
   flight_number: number;
   mission_name: string;

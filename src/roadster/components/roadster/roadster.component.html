@@ -4,10 +4,8 @@
       <mat-card-title>{{ roadster.name }}</mat-card-title>
       <mat-card-content class="launched">
         The midnight cherry Tesla Roadster was launched on
-        {{ roadster.launch_date_utc | date: "shortDate" }}
-        and has been in space for
-        {{ roadster.period_days | number: "1.0-0" }} days.</mat-card-content
-      >
+        {{ roadster.launch_date_utc | date: "shortDate" }}.
+      </mat-card-content>
     </mat-card>
   </div>
 
@@ -40,19 +38,6 @@
   </div>
 
   <div class="bg-img-3"></div>
-
-  <!-- <div class="numbers content">
-    <p>{{ roadster.norad_id }}</p>
-    <p>Epoch:{{ roadster.epoch_jd }}</p>
-    <p>Orbit type:{{ roadster.orbit_type }}</p>
-    <p>{{ roadster.apoapsis_au }}</p>
-    <p>{{ roadster.periapsis_au }}</p>
-    <p>{{ roadster.semi_major_axis_au }}</p>
-    <p>{{ roadster.eccentricity }}</p>
-    <p>{{ roadster.inclination }}</p>
-    <p>{{ roadster.longitude }}</p>
-    <p>{{ roadster.periapsis_arg }}</p>
-  </div> -->
 
   <div class="video-container">
     <iframe

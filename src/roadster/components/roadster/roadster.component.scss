@@ -6,6 +6,7 @@
   z-index: 0;
   position: relative;
   padding: 1rem;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 4rem;
   }
@@ -52,7 +53,6 @@ mat-card {
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url(../../../assets/img/roadster_side_1920.jpg);
     background-position: center;
-
     min-height: 700px;
     height: 700px;
   }

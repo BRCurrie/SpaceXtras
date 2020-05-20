@@ -27,7 +27,6 @@ describe("EventsReducer", () => {
 
   describe("LOAD_EVENTS_SUCCESS action", () => {
     it("should map an array to entities", () => {
-      // expected input.
       const events: History[] = [
         {
           id: 1,
@@ -56,11 +55,8 @@ describe("EventsReducer", () => {
           },
         },
       ];
-      // expected output
       const entities = {
-        // id of 1 and array index 0
         1: events[0],
-        // id of 2 and array index 1
         2: events[1],
       };
       const { initialState } = fromEvents;

@@ -15,14 +15,10 @@ export class RouterEffects {
     private location: Location
   ) {}
 
-  // setup our effects.
-  // we want to handle a side effect of navigating, we do not want to dispatch these
   @Effect({ dispatch: false })
   navigate$ = this.action$.pipe(
     ofType(RouterActions.GO),
     map((action: RouterActions.Go) => action.payload),
-    // step out and handle side effect
-    // query is renamed as queryParams in ngrx documentation
     tap(({ path, query: queryParams, extras }) => {
       this.router.navigate(path, { queryParams, ...extras });
     })

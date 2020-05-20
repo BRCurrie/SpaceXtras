@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-} from "@angular/core";
-import { Launch } from "src/shared/interfaces/launch";
-
-// import { ParallaxDirective } from "./directives/parallax.directive";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
   selector: "app-dashboard",
@@ -15,24 +7,7 @@ import { Launch } from "src/shared/interfaces/launch";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  @Input()
-  nextLaunch: Launch;
-
-  // current date
-  date1: number;
-  // launch_date_unix
-  date2: number;
-
-  // countDown() {
-  //   this.date1 = Date.now();
-  //   this.date2 = this.nextLaunch.launch_date_unix;
-  //   let timeUntil = this.date2 - this.date1;
-  //   console.log(this.date1);
-  // }
-
   constructor() {}
 
-  ngOnInit() {
-    // this.countDown();
-  }
+  ngOnInit() {}
 }

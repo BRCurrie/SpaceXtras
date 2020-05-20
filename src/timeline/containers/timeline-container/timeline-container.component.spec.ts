@@ -16,6 +16,7 @@ import { MglTimelineModule } from "angular-mgl-timeline";
 import { TimelineContainerComponent } from "./timeline-container.component";
 import * as fromComponents from "../../components";
 import { History } from "../../interfaces/history";
+import { mockEvent } from "src/testing/mock-events";
 
 describe("TimelineContainerComponent", () => {
   let component: TimelineContainerComponent;
@@ -30,21 +31,7 @@ describe("TimelineContainerComponent", () => {
     description: "Test Description",
   };
 
-  let testData: History[] = [
-    {
-      id: 1,
-      title: "TITLE",
-      event_date_utc: "2018-02-06T20:45:00.000Z",
-      event_date_unix: 2,
-      flight_number: 3,
-      details: "DETAILS",
-      links: {
-        reddit: "REDDIT",
-        article: "ARTICLE",
-        wikipedia: "WIKIPEDIA",
-      },
-    },
-  ];
+  let testData: History[] = [mockEvent];
 
   const initialState = {
     timelineFeature: {

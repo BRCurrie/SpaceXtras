@@ -13,13 +13,11 @@ import { JumboData } from "../../../shared/interfaces/jumboData";
   styles: [],
 })
 export class AboutContainerComponent implements OnInit {
-  // class for the jumbotron
   bgImg: string = "aboutImage";
 
-  // object for jumbotron
   pageData: JumboData = {
     title: "About",
-    description: "Filler Text",
+    description: "Everything you want to know about this site",
   };
 
   constructor() {}

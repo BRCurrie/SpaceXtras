@@ -207,24 +207,19 @@ describe("LaunchesTableComponent", () => {
       fixture.detectChanges();
 
       let tableRows = fixture.nativeElement.querySelectorAll("tr");
-      // Table Header and Data Row
       expect(tableRows.length).toBe(2);
 
-      // Header row
       let headerRow = tableRows[0];
       expect(headerRow.cells[0].innerHTML).toContain("Mission Name");
       expect(headerRow.cells[1].innerHTML).toContain("Flight No.");
       expect(headerRow.cells[2].innerHTML).toContain("Date");
       expect(headerRow.cells[3].innerHTML).toContain("Success");
 
-      // Data rows
       let row1 = tableRows[1];
       expect(row1.cells[0].innerHTML).toBe("CRS-11");
       console.log(row1);
       expect(row1.cells[1].innerHTML).toBe("41");
-      // date is piped with shortDate
       expect(row1.cells[2].innerHTML).toBe(" 6/3/17 ");
-      // expect a check icon
       expect(row1.cells[3].innerHTML).toContain("fa-check");
 
       done();

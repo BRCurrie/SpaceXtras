@@ -37,7 +37,6 @@ export class LaunchesTableComponent implements OnInit {
 
   constructor(private matDialog: MatDialog) {}
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     "mission_name",
     "flight_number",
@@ -45,7 +44,6 @@ export class LaunchesTableComponent implements OnInit {
     "launch_success",
   ];
 
-  // Pass data into the dialog/modal
   openDialog(row) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { launches: row };
@@ -68,7 +66,6 @@ export class LaunchesTableComponent implements OnInit {
 
   populateDataSource(launches) {
     return (this.dataSource.data = launches);
-    // this.isLoading = false;
   }
 
   ngOnInit() {

@@ -1,4 +1,39 @@
-// https://api.spacexdata.com/v3/roadster
+import { Injectable } from "@angular/core";
+
+export interface Adapter<RoadsterModel> {
+  adapt(data: any): RoadsterModel;
+}
+
+@Injectable({
+  providedIn: "root",
+})
+export class RoadsterAdapter implements Adapter<RoadsterModel> {
+  adapt(data: any): RoadsterModel {
+    return new RoadsterModel(
+      data.name,
+      data.launch_date_utc,
+      data.launch_mass_lbs,
+      data.period_days,
+      data.speed_mph,
+      data.earth_distance_mi,
+      data.mars_distance_mi,
+      data.details
+    );
+  }
+}
+
+export class RoadsterModel {
+  constructor(
+    public name: string,
+    public launch_date_utc: string,
+    public launch_mass_lbs: number,
+    public period_days: number,
+    public speed_mph: number,
+    public earth_distance_mi: number,
+    public mars_distance_mi: number,
+    public details: string
+  ) {}
+}
 
 export interface Roadster {
   name: string;

@@ -88,7 +88,7 @@
   }
 
   mat-sidenav {
-    width: 350px;
+    width: 200px;
     max-width: 85vw;
   }
 
@@ -106,7 +106,7 @@
     }
 
     mat-drawer-content {
-      min-width: 200px;
+      min-width: 60px;
       display: flex;
       flex-direction: column;
       span {

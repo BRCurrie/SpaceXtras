@@ -1,10 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
-// import {
-//   provideMockStore,
-//   // MockStore
-// } from "@ngrx/store/testing";
 import { By } from "@angular/platform-browser";
 
 import { MaterialDesignModule } from "../../../material-design/material-design.module";
@@ -40,7 +36,12 @@ describe("DashboardContainerComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialDesignModule, TestingModule, SharedModule],
+      imports: [
+        MaterialDesignModule,
+        TestingModule,
+        SharedModule,
+        NoopAnimationsModule,
+      ],
       declarations: [DashboardContainerComponent, ...fromComponents.components],
       // providers: [provideMockStore({ initialState })],
     }).compileComponents();
@@ -49,7 +50,7 @@ describe("DashboardContainerComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DashboardContainerComponent);
     component = fixture.componentInstance;
-    component.pageData = jumboData;
+    // component.pageData = jumboData;
     // viewComponent = fixture.debugElement.query(By.css("app-dashboard"))
     //   .componentInstance;
     jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))

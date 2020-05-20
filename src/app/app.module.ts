@@ -10,7 +10,7 @@ import {
 } from "@ngrx/router-store";
 import { StoreModule, MetaReducer } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import { reducers, effects, CustomerSerializer } from "./store";
+import { reducers, effects, CustomSerializer } from "./store";
 
 import { AppComponent } from "./app.component";
 
@@ -60,7 +60,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     StoreRouterConnectingModule.forRoot(),
   ],
   entryComponents: [LaunchesModalComponent],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomerSerializer }],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

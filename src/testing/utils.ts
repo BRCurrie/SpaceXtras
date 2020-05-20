@@ -1,7 +1,7 @@
 import { NgModule, Injectable } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-// import { TranslateModule } from '@ngx-translate/core';
+
 import {
   Store,
   StateObservable,
@@ -42,15 +42,9 @@ export function provideMockStore() {
     NoopAnimationsModule,
     RouterTestingModule,
     SharedModule,
-    // TranslateModule.forRoot(),
     StoreModule.forRoot({}),
   ],
-  exports: [
-    NoopAnimationsModule,
-    RouterTestingModule,
-    SharedModule,
-    // TranslateModule
-  ],
+  exports: [NoopAnimationsModule, RouterTestingModule, SharedModule],
   providers: [provideMockStore()],
 })
 export class TestingModule {
