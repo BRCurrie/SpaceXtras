@@ -16,44 +16,34 @@
   }
 }
 
-.jumbotron.dashboardImage {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("src/assets/img/iridium4_800.jpg");
-  background-position: 40%;
-  @media (min-width: map-get($grid-breakpoints, md)) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("src/assets/img/iridium4_1920.jpg");
-  }
-}
-
 .jumbotron.launchesImage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("src/assets/img/raptor_test_800.jpg");
+    url("src/img/raptor_test_800.jpg");
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("src/assets/img/raptor_test.jpg");
+      url("src/img/raptor_test.jpg");
   }
 }
 
 .jumbotron.roadsterImage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("src/assets/img/roadster_inside_800.jpg");
+    url("src/img/roadster_inside_800.jpg");
   background-position: left;
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("src/assets/img/roadster_inside.jpg");
+      url("src/img/roadster_inside.jpg");
   }
 }
 
 .jumbotron.timelineImage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("src/assets/img/crs8_800.jpg");
+    url("src/img/crs8_800.jpg");
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("src/assets/img/crs8_1920.jpg");
+      url("src/img/crs8_1920.jpg");
     @media (min-width: map-get($grid-breakpoints, xl)) {
       background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("src/assets/img/crs8_1920.jpg");
+        url("src/img/crs8_1920.jpg");
       background-position: 50% 70%;
     }
   }
@@ -61,10 +51,10 @@
 
 .jumbotron.aboutImage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("src/assets/img/crew_dragon_800.jpg");
+    url("src/img/crew_dragon_800.jpg");
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("src/assets/img/crew_dragon_1920.jpg");
+      url("src/img/crew_dragon_1920.jpg");
   }
 }
 

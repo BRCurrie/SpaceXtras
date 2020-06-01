@@ -14,12 +14,6 @@ describe("DashboardContainerComponent", () => {
   let component: DashboardContainerComponent;
   let fixture: ComponentFixture<DashboardContainerComponent>;
   let viewComponent;
-  let jumboComponent;
-
-  let jumboData = {
-    title: "Test Title",
-    description: "Test Description",
-  };
 
   // let testData: Next[] = [{}];
 
@@ -53,8 +47,7 @@ describe("DashboardContainerComponent", () => {
     // component.pageData = jumboData;
     // viewComponent = fixture.debugElement.query(By.css("app-dashboard"))
     //   .componentInstance;
-    jumboComponent = fixture.debugElement.query(By.css("app-jumbotron"))
-      .componentInstance;
+
     fixture.detectChanges();
   });
 
@@ -72,8 +65,4 @@ describe("DashboardContainerComponent", () => {
   // it("should set @Input history to be populated from data$", () => {
   //   expect(viewComponent.history).toEqual(testData);
   // });
-
-  it("should set title and description in Jumbotron", () => {
-    expect(jumboComponent.pageData).toEqual(jumboData);
-  });
 });

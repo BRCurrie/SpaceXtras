@@ -39,7 +39,7 @@ mat-card {
 .bg-img-1 {
   border-radius: 4px;
 
-  background-image: url(../../../assets/img/roadster_side_800.jpg);
+  background-image: url("src/img/roadster_side_800.jpg");
   position: relative;
   background-attachment: fixed;
   background-position: 63%;
@@ -51,7 +51,7 @@ mat-card {
   transform: translateZ(0.3px) scale(0.8);
 
   @media (min-width: map-get($grid-breakpoints, md)) {
-    background-image: url(../../../assets/img/roadster_side_1920.jpg);
+    background-image: url("src/img/roadster_side_1920.jpg");
     background-position: center;
     min-height: 700px;
     height: 700px;
@@ -60,8 +60,7 @@ mat-card {
 
 .bg-img-2 {
   border-radius: 4px;
-
-  background-image: url(../../../assets/img/roadster_front_800.jpg);
+  background-image: url("src/img/roadster_front_800.jpg");
   position: relative;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -71,15 +70,14 @@ mat-card {
   min-height: 500px;
   transform: translateZ(0.3px) scale(0.8);
   @media (min-width: map-get($grid-breakpoints, md)) {
-    background-image: url(../../../assets/img/roadster_front_1920.jpg);
+    background-image: url("src/img/roadster_front_1920.jpg");
     min-height: 700px;
   }
 }
 
 .bg-img-3 {
   border-radius: 4px;
-
-  background-image: url(../../../assets/img//roadster_payload_800.jpg);
+  background-image: url("src/img/roadster_payload_800.jpg");
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -89,7 +87,7 @@ mat-card {
   min-height: 500px;
   transform: translateZ(0.3px) scale(0.8);
   @media (min-width: map-get($grid-breakpoints, md)) {
-    background-image: url(../../../assets/img/roadster_load_1920.jpg);
+    background-image: url("src/img/roadster_load_1920.jpg");
     min-height: 700px;
   }
 }

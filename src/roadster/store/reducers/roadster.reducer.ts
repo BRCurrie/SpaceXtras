@@ -3,14 +3,12 @@ import * as fromRoadster from "../actions/roadster.action";
 import { Roadster } from "../../interfaces/roadster";
 
 export interface RoadsterState {
-  // entities: [ [norad_id: number]: Roadster ];
   data: Roadster[];
   loaded: boolean;
   loading: boolean;
 }
 
 export const initialState: RoadsterState = {
-  // entities: {},
   data: [],
   loaded: false,
   loading: false,
@@ -50,4 +48,3 @@ export function reducer(
 export const getRoadsterLoading = (state: RoadsterState) => state.loading;
 export const getRoadsterLoaded = (state: RoadsterState) => state.loaded;
 export const getRoadster = (state: RoadsterState) => state.data;
-// export const getRoadsterEntities = (state: RoadsterState) => state.entities;

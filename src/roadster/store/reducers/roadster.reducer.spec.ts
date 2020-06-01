@@ -20,14 +20,14 @@ describe("RoadsterReducer", () => {
       const action = new fromActions.LoadRoadster();
 
       const state = fromRoadster.reducer(initialState, action);
-      expect(state.entities).toEqual([]);
+      expect(state.data).toEqual([]);
       expect(state.loaded).toEqual(false);
       expect(state.loading).toEqual(true);
     });
   });
 
   describe("LOAD_ROADSTER_SUCCESS action", () => {
-    it("should map an array to entities", () => {
+    it("should map the array to data", () => {
       const roadster: Roadster[] = [mockRoadster];
       // expected output
       // const entities = {
@@ -40,7 +40,7 @@ describe("RoadsterReducer", () => {
       const action = new fromActions.LoadRoadsterSuccess(roadster);
       const state = fromRoadster.reducer(initialState, action);
 
-      expect(state.entities).toEqual(roadster);
+      expect(state.data).toEqual(roadster);
       expect(state.loaded).toEqual(true);
       expect(state.loading).toEqual(false);
     });
