@@ -26,9 +26,9 @@ describe("AppComponent", () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SpaceX Data'`, () => {
+  it(`should have as title 'SpaceXtras'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual("SpaceX Data");
+    expect(app.title).toEqual("SpaceXtras");
   });
 });

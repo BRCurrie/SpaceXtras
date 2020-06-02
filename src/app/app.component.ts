@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "SpaceX Data";
+  title = "SpaceXtras";
   theme = "app-theme";
 
   isHandset$: Observable<boolean> = this.breakpointObserver
