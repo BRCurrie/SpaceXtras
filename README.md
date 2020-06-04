@@ -1,29 +1,32 @@
 # SpaceXtras
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
+## Purpose
 
-## Development server
+This site is an Angular SPA that showcases data from a public API with information
+about SpaceX. You can view all past and upcoming launches on the Missions page. The Timeline page has information regarding major events in SpaceX history. On the Roadster page you will find data information regarding the now iconic roadster.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Styles
 
-## Code scaffolding
+- Prettier - Code formatter
+- SCSS
+- Angular Material Theming
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Pages
 
-## Build
+- Dashboard
+- Missions
+- Roadster
+- Timeline
+- About
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
+## Unit Tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+- Jasmine
+- Jasmine/Marbles
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## API
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-# SpaceXtras
+Information used in this site is from an open-source API provided by r/SpaceX.
+[Github](https://github.com/r-spacex/SpaceX-API)
