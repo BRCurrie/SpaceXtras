@@ -48,6 +48,7 @@ import {
   faGithub,
   faReddit,
   faWikipediaW,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
 const modules: any[] = [
@@ -97,7 +98,8 @@ export class MaterialDesignModule {
       faNewspaper,
       faReddit,
       faWikipediaW,
-      faChevronDown
+      faChevronDown,
+      faLinkedin
     );
   }
 }
