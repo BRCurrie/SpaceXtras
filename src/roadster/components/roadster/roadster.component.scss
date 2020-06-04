@@ -38,10 +38,9 @@ mat-card {
 
 .bg-img-1 {
   border-radius: 4px;
-
   background-image: url("src/img/roadster_side_800.jpg");
   position: relative;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-position: 63%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -49,7 +48,6 @@ mat-card {
   min-height: 500px;
   height: 500px;
   transform: translateZ(0.3px) scale(0.8);
-
   @media (min-width: map-get($grid-breakpoints, md)) {
     background-image: url("src/img/roadster_side_1920.jpg");
     background-position: center;
@@ -62,7 +60,7 @@ mat-card {
   border-radius: 4px;
   background-image: url("src/img/roadster_front_800.jpg");
   position: relative;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -79,7 +77,7 @@ mat-card {
   border-radius: 4px;
   background-image: url("src/img/roadster_payload_800.jpg");
   position: relative;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -13,7 +13,7 @@ export class NextLaunchComponent implements OnInit {
   today: number;
 
   public lessThan24Hours(subj: number, num: number) {
-    return subj < num;
+    return subj < num && subj > 0;
   }
 
   ngOnInit(): void {

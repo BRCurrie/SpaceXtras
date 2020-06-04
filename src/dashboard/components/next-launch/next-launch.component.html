@@ -4,13 +4,18 @@
   <p>
     {{ nextLaunch.mission_name }}
   </p>
-  <p>{{ nextLaunch.launch_date_utc | date: "short" }}</p>
+  <ng-container *ngIf="nextLaunch.launch_date_unix - today > 0">
+    <p>{{ nextLaunch.launch_date_utc | date: "short" }}</p>
+  </ng-container>
+
   <ng-container
     *ngIf="lessThan24Hours(nextLaunch.launch_date_unix - today, 86400)"
   >
-    <countdown
-      [config]="{ leftTime: nextLaunch.launch_date_unix - today }"
-    ></countdown>
+    <div>
+      <countdown
+        [config]="{ leftTime: nextLaunch.launch_date_unix - today }"
+      ></countdown>
+    </div>
   </ng-container>
   <a
     mat-raised-button
