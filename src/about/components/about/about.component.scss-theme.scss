@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+@mixin about-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  fa-icon {
+    color: mat-color($accent);
+  }
+}

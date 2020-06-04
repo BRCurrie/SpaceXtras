@@ -5,10 +5,12 @@
 @import "./themes/app-theme";
 @import "./timeline/components/timeline/timeline.component.scss-theme.scss";
 @import "./app/components/sidenav/sidenav.component.scss-theme.scss";
+@import "./about/components/about/about.component.scss-theme.scss";
 
 @mixin custom-components-theme($theme) {
   @include timeline-component-theme($theme);
   @include sidenav-component-theme($theme);
+  @include about-component-theme($theme);
 }
 
 .app-theme {
